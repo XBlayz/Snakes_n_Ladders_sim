@@ -1,0 +1,8 @@
+= “Ingegneria del Software” | 2023-2024
+Docente: Prof. Angelo Furfaro; Studente: Stefano Scarcelli - 230668 <scrsfn02t15d086u@studenti.unical.it>
+Documento Finale (D3) | {docdate}
+:doctype: article
+:title-separator: |
+:toc:
+
+== List of Challenging/Risky Requirements or Tasks
