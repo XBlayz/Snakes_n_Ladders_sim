@@ -4,11 +4,11 @@
 
 
 <!-- Parameters:
-*** `github_username`, `repo_name`,
-*** `project_owner_name`, `email_client`, `email`,
-*** `project_title`, `project_description`
-*** `extended_project_description`
-*** `license_tipe`
+*** `XBlayz`, `Snakes_n_Ladders_sim`,
+*** `S. Scarcelli`, `protonmail.com`, `xblayz.github`,
+*** `Snakes & Ladders - Simulator`, `A program for simulate Snakes & Ladders matches`
+*** `A program for simulate Snakes & Ladders matches with different layer of customization like custom board, different rules and many more`
+*** `MIT License`
 -->
 
 
@@ -26,25 +26,25 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Snakes & Ladders - Simulator</h3>
 
   <p align="center">
-    project_description
+    A program for simulate Snakes & Ladders matches
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim/issues">Request Feature</a>
     .
-    <a href="https://github.com/github_username/repo_name/discussions">Discussions</a>
+    <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim/discussions">Discussions</a>
   </p>
 </div>
 
@@ -83,7 +83,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-extended_project_description
+extended_A program for simulate Snakes & Ladders matches
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,7 +124,7 @@ extended_project_description
 ## Roadmap
 - [ ] ...
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,7 +149,7 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 ## License
-Distributed under the license_tipe License. See `LICENSE.txt` for more information.
+Distributed under the MIT License License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -157,9 +157,9 @@ Distributed under the license_tipe License. See `LICENSE.txt` for more informati
 
 <!-- CONTACT -->
 ## Contact
-project_owner_name - email@email_client.com
+S. Scarcelli - xblayz.github@protonmail.com.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/XBlayz/Snakes_n_Ladders_sim](https://github.com/XBlayz/Snakes_n_Ladders_sim)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,16 +175,16 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[discussions-shield]: https://img.shields.io/github/discussions/github_username/repo_name.svg?style=for-the-badge
-[discussions-url]: https://github.com/github_username/repo_name/discussions
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[contributors-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[forks-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/network/members
+[discussions-shield]: https://img.shields.io/github/discussions/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[discussions-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/discussions
+[stars-shield]: https://img.shields.io/github/stars/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[stars-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/stargazers
+[issues-shield]: https://img.shields.io/github/issues/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[issues-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/issues
+[license-shield]: https://img.shields.io/github/license/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
+[license-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
