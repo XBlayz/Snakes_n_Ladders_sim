@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/XBlayz/Snakes_n_Ladders_sim">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src=".img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Snakes & Ladders - Simulator</h3>
@@ -173,7 +173,7 @@ Project Link: [https://github.com/XBlayz/Snakes_n_Ladders_sim](https://github.co
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
+<!-- MARKDOWN LINKS & images -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
 [contributors-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/graphs/contributors
@@ -187,4 +187,4 @@ Project Link: [https://github.com/XBlayz/Snakes_n_Ladders_sim](https://github.co
 [issues-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/issues
 [license-shield]: https://img.shields.io/github/license/XBlayz/Snakes_n_Ladders_sim.svg?style=for-the-badge
 [license-url]: https://github.com/XBlayz/Snakes_n_Ladders_sim/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: .img/screenshot.png
