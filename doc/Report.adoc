@@ -168,7 +168,7 @@ _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazion
 == D. Dati e loro modellazione  (se il sistema si interfaccia con un DBMS)
 _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui sopra. Modellate tali dati tramite un ER o similari. Specificate se e quali di tali dati sono gia’ forniti da applicativi esistenti._
 
-#TODO
+*Il sistema non fa uso di DBMS.*
 
 == E. Scelte Progettuali (Design Decisions)
 _Documenta qui le 5 decisioni progettuali più importanti che hai dovuto prendere. È possibile utilizzare sia una specifica testuale che schematica._
