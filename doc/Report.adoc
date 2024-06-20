@@ -121,7 +121,19 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 === B.2 Requisiti non Funzionali
 _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 
-. #TODO
+. _Interfaccia grafica_ (*GUI*):
+.. Menu principale
+.. Interfaccia di simulazione
+.. Animazioni movimento pedine
+.. Animazioni lancio dadi
+.. Animazioni mazzo di carte
+.. Leader board
+. _Simulazione della partita:_
+.. Simulazione di più partite in maniera rapida (senza visualizzazione dei turni, solo risultato finale)
+. _Termine simulazione:_
+.. Rieseguire simulazione più volte in modo rapido (mantenendo le stesse impostazioni)
+.. Grafico storico punteggi dei vari giocatori durante la simulazione
+
 
 === B.3 Scenari d’uso dettagliati
 _Descrivere gli scenari più comuni, più interessanti, o più complicati d’uso dei vostri servizi._
