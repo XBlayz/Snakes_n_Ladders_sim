@@ -9,10 +9,10 @@ Documento Finale (D3) | {docdate}
 |===
 ^.^|Challenging Task ^.^|Date the task is identified ^.^|Date the challenge is resolved ^.^|Explanation on how the challenge has been managed
 
-|
-|
-|
-|
+|Impostazione del _progetto_ con sistema di automazione di *build*, *test* e gestore delle *dipendenze*
+^.^|17/06/2024
+^.^|18/06/2024
+|Tentativo di uso di *Maven*, poi scartato per via di errori nella gestione della dependency di _JavaFX_, e scelta della soluzione tramite *Gradle*
 
 |
 |
