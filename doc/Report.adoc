@@ -121,3 +121,23 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 
 === B.2 Requisiti non Funzionali
 _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
+
+
+
+=== B.3 Scenari d’uso dettagliati
+_Descrivere gli scenari più comuni, più interessanti, o più complicati d’uso dei vostri servizi._
+
+
+
+=== B.4 Excluded Requirements
+_Descrivere i servizi eventualmente i esclusi, e spiegare il perché_
+
+
+
+=== B.5 Assunzioni
+_Documenta brevemente, in questa sezione, le ipotesi/decisioni sui requisiti più rilevanti che hai dovuto prendere durante il tuo progetto_
+
+
+
+=== B.6 Use Case Diagrams
+
