@@ -81,7 +81,7 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 .. Lancio dei dai (*Importanza* _alta_, *Complessità* _media_)
 .. Regole di movimento delle pedine (*Importanza* _alta_, *Complessità* _alta_)
 .. Mazzo di carte (*Importanza* _media_, *Complessità* _alta_)
-. _Visualizzazione deli turni simulati:_
+. _Visualizzazione dei turni simulati:_
 .. Rappresentazione del tabellone (*Importanza* _media_, *Complessità* _alta_)
 .. Rappresentazione delle pedine sul tabellone (*Importanza* _media_, *Complessità* _bassa_)
 .. Leader board (*Importanza* _bassa_, *Complessità* _bassa_)
