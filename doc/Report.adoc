@@ -84,7 +84,6 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 . _Visualizzazione dei turni simulati:_
 .. Rappresentazione del tabellone (*Importanza* _media_, *Complessità* _alta_)
 .. Rappresentazione delle pedine sul tabellone (*Importanza* _media_, *Complessità* _bassa_)
-.. Leader board (*Importanza* _bassa_, *Complessità* _bassa_)
 . _Visualizzazione dei risultati della partita:_
 .. Vincitore della partita (*Importanza* _alta_, *Complessità* _bassa_)
 .. Classifica finale (*Importanza* _bassa_, *Complessità* _bassa_)
@@ -101,7 +100,7 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 ! ^.^!Bassa ^.^!Media ^.^!Alta
 
 ^.^!*Bassa*
-!3.c, 4.b
+!4.b
 !1.b
 !
 
