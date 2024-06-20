@@ -72,3 +72,52 @@ _A partire dai servizi minimali richiesti, raffinate la descrizione dei servizi 
 
 === B.1 Servizi (con prioritizzazione)
 _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quelli che ritenete siano le soluzioni concettuali necessarie. In questa fase, non fate riferimento ad alcuna tecnologia specifica. Se volete, intervistate stakeholder e collezionate dati dal web o da altre sorgenti. Dovete acquisire una conoscenza avanzata dei problemi associate ai vostri servizi. Assegnate un ID a ciascun servizio. Prioritizzate inoltre i servizi in base a due scale: Importanza alta, media, bassa. Complessità alta, media, bassa._
+
+. _Impostazione della partita da simulare:_
+.. Interfaccia di setup (*Importanza* _media_, *Complessità* _bassa_)
+.. Salvare/caricare setup (*Importanza* _bassa_, *Complessità* _media_)
+. _Simulazione della partita:_
+.. Avanzamento automatico e manuale (*Importanza* _alta_, *Complessità* _bassa_)
+.. Lancio dei dai (*Importanza* _alta_, *Complessità* _media_)
+.. Regole di movimento delle pedine (*Importanza* _alta_, *Complessità* _alta_)
+.. Mazzo di carte (*Importanza* _media_, *Complessità* _alta_)
+. _Visualizzazione deli turni simulati:_
+.. Rappresentazione del tabellone (*Importanza* _media_, *Complessità* _alta_)
+.. Rappresentazione delle pedine sul tabellone (*Importanza* _media_, *Complessità* _bassa_)
+.. Leader board (*Importanza* _bassa_, *Complessità* _bassa_)
+. _Visualizzazione dei risultati della partita:_
+.. Vincitore della partita (*Importanza* _alta_, *Complessità* _bassa_)
+.. Classifica finale (*Importanza* _bassa_, *Complessità* _bassa_)
+
+.Importanza/Complessità dei servizi
+[cols="1,5a"]
+|===
+| ^.^|Complessità
+
+^.^|*Importanza*
+|
+
+!===
+! ^.^!Bassa ^.^!Media ^.^!Alta
+
+^.^!*Bassa*
+!3.c, 4.b
+!1.b
+!
+
+^.^!*Media*
+!1.a, 3.b
+!
+!2.d, 3.a
+
+^.^!*Alta*
+!2.a, 4.a
+!2.b
+!2.c
+
+!===
+
+|===
+
+=== B.2 Requisiti non Funzionali
+_Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
