@@ -24,7 +24,7 @@ Documento Finale (D3) | {docdate}
 == A. Stato dell’Arte
 _Analizzate sistemi esistenti, prendete spunto da cio’ che esiste._
 
-=== Web application:
+=== A.1 Web application:
 * *Snakes and Ladders* (https://www.crazygames.com/game/snakes-and-ladders[Play on CrazyGames])
 ** Presenza di due modalità con rappresentazione grafica differente;
 ** Possibilità di giocare *Player VS Player* (tutti contro tutti) o *Player VS Computer* (1 VS Computer);
@@ -46,7 +46,7 @@ _Analizzate sistemi esistenti, prendete spunto da cio’ che esiste._
 * *Snakes And Ladders* (https://www.alc.ca/content/alc/en/play-online/instant-win-games/snakes-ladders.html[Atlantic Lottery])
 ** Gioco d'azzardo;
 
-=== PC & Game console:
+=== A.2 PC & Game console:
 * *Snakes & Ladders+ : Board Game* (https://www.xbox.com/it-IT/games/store/snakes-ladders-board-game-pc-xbox/9P1K912MHQKB[Link])
 ** Tema marino;
 ** Possibilità di giocare *Player VS Player* (1 VS 1) o *Player VS Computer* (1 VS Computer);
@@ -57,7 +57,7 @@ _Analizzate sistemi esistenti, prendete spunto da cio’ che esiste._
 ** Tabellone da *100* _caselle_;
 ** Possibilità di scegliere il *colore* del _tabellone_ tra vari preset;
 
-=== Mobile game:
+=== A.3 Mobile game:
 * *Snakes and Ladders* (https://play.google.com/store/apps/details?id=ir.Hadiware.Snake_Ladder&hl=en_US[Link])
 ** Vari *temi* e *tipologie* di _tabelloni_;
 ** Possibilità di giocare da *2* a *4* _giocatori_;
