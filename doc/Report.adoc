@@ -122,22 +122,58 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 === B.2 Requisiti non Funzionali
 _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 
-
+. #TODO
 
 === B.3 Scenari d’uso dettagliati
 _Descrivere gli scenari più comuni, più interessanti, o più complicati d’uso dei vostri servizi._
 
-
+* #TODO
 
 === B.4 Excluded Requirements
 _Descrivere i servizi eventualmente i esclusi, e spiegare il perché_
 
-
+. #TODO
 
 === B.5 Assunzioni
 _Documenta brevemente, in questa sezione, le ipotesi/decisioni sui requisiti più rilevanti che hai dovuto prendere durante il tuo progetto_
 
-
+* #TODO
 
 === B.6 Use Case Diagrams
 
+#TODO
+
+== C. Architettura Software
+_SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazione del tuo sistema, in termini di diagramma dei componenti e i relativi diagrammi di sequenza._
+
+=== C.1 La visione statica del sistema: Diagramma dei Componenti
+
+#TODO
+
+=== C.2 La visione dinamica dell'architettura software: Sequence Diagram
+
+#TODO
+
+== D. Dati e loro modellazione  (se il sistema si interfaccia con un DBMS)
+_Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui sopra. Modellate tali dati tramite un ER o similari. Specificate se e quali di tali dati sono gia’ forniti da applicativi esistenti._
+
+#TODO
+
+== E. Scelte Progettuali (Design Decisions)
+_Documenta qui le 5 decisioni progettuali più importanti che hai dovuto prendere. È possibile utilizzare sia una specifica testuale che schematica._
+
+#TODO
+
+== F. Progettazione di Basso Livello
+
+#TODO
+
+== G. Spiegare come il progetto soddisfa i requisiti funzionali (RF) e quelli non funzionali (RNF)
+_Riporta in questa sezione in che modo la progettazione architettonica e di basso livello prodotta soddisfa gli RF e gli RNF._
+
+#TODO
+
+== Appendice. Prototipo
+_Fornisci un breve rapporto sul tuo prototipo e in particolare: informazioni su ciò che hai implementato, come l'implementazione copre RF e RNF, come i prototipi dimostrano la correttezza del tuo progetto rispetto a RF e RNF. Puoi aggiungere alcuni screenshot per descrivere quanto richiesto sopra. Preparati a mostrare il tuo prototipo durante l'esame orale._
+
+#TODO
