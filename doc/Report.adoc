@@ -1,6 +1,6 @@
 = “Ingegneria del Software” | 2023-2024
 Docente: Prof. Angelo Furfaro; Studente: Stefano Scarcelli - 230668 <scrsfn02t15d086u@studenti.unical.it>
-Final Document (D3) | {docdate}
+Documento Finale (D3) | {docdate}
 :doctype: article
 :title-separator: |
 :toc:
@@ -21,21 +21,54 @@ Final Document (D3) | {docdate}
 
 |===
 
-== A. State of art
-Analyze existing systems, take inspiration from what exists
+== A. Stato dell’Arte
+_Analizzate sistemi esistenti, prendete spunto da cio’ che esiste._
 
 === Web application:
-* Snakes and Ladders (https://www.crazygames.com/game/snakes-and-ladders[Play on CrazyGames])
-* Play Snakes and Ladders (https://www.calculators.org/games/snakes-and-ladders/[Calculators.org])
-* Snakes And Ladders (https://www.playonlinedicegames.com/snakesandladders[Playonlinedicegames.com])
-* Snakes And Ladders (https://www.alc.ca/content/alc/en/play-online/instant-win-games/snakes-ladders.html[Atlantic Lottery])
+* *Snakes and Ladders* (https://www.crazygames.com/game/snakes-and-ladders[Play on CrazyGames])
+** Presenza di due modalità con rappresentazione grafica differente;
+** Possibilità di giocare *Player VS Player* (tutti contro tutti) o *Player VS Computer* (1 VS Computer);
+** Possibilità di giocare da *2* a *6* _giocatori_;
+** Animazione lancio di dadi (pre renderizzata, non in real time);
+** Indicatore di _turno_;
+** Piccola schermata di spiegazione delle *regole di gioco*;
+* *Play Snakes and Ladders* (https://www.calculators.org/games/snakes-and-ladders/[Calculators.org])
+** Grafica stilizzata;
+** Modalità *Single Player* e *Multi Player*;
+** Possibilità di giocare da *2* a *4* _giocatori_;
+** Effetti sonori;
+** *Leader board*;
+** Indicatore di _turno_;
+* *Snakes And Ladders* (https://www.playonlinedicegames.com/snakesandladders[Playonlinedicegames.com])
+** Possibilità di giocare *Player VS Player* (1 VS 1) o *Player VS Computer* (1 VS Computer);
+** Interfaccia semplice;
+** Animazioni di turno rapide;
+* *Snakes And Ladders* (https://www.alc.ca/content/alc/en/play-online/instant-win-games/snakes-ladders.html[Atlantic Lottery])
+** Gioco d'azzardo;
 
-=== PC and Game console:
-* Snakes & Ladders+ : Board Game (https://www.xbox.com/it-IT/games/store/snakes-ladders-board-game-pc-xbox/9P1K912MHQKB[Link])
-* Snake and Ladder Game for Windows 10 (https://download.cnet.com/snake-and-ladder-game-for-windows-10/3000-2111_4-77568851.html[Link])
+=== PC & Game console:
+* *Snakes & Ladders+ : Board Game* (https://www.xbox.com/it-IT/games/store/snakes-ladders-board-game-pc-xbox/9P1K912MHQKB[Link])
+** Tema marino;
+** Possibilità di giocare *Player VS Player* (1 VS 1) o *Player VS Computer* (1 VS Computer);
+** Diversi _tabelloni_;
+** Spiegazione esaustiva delle *regole di gioco*;
+* *Snake and Ladder Game for Windows 10* (https://download.cnet.com/snake-and-ladder-game-for-windows-10/3000-2111_4-77568851.html[Link])
+** Giocabile da *2* a _più giocatori_ (non specificato nella descrizione);
+** Tabellone da *100* _caselle_;
+** Possibilità di scegliere il *colore* del _tabellone_ tra vari preset;
 
 === Mobile game:
-* Snakes and Ladders (https://play.google.com/store/apps/details?id=ir.Hadiware.Snake_Ladder&hl=en_US[Link])
-* Snakes and Ladders Board Games (https://play.google.com/store/apps/details?id=com.idz.snakes.and.ladders.dice.board.games&hl=en_US[Link])
+* *Snakes and Ladders* (https://play.google.com/store/apps/details?id=ir.Hadiware.Snake_Ladder&hl=en_US[Link])
+** Vari *temi* e *tipologie* di _tabelloni_;
+** Possibilità di giocare da *2* a *4* _giocatori_;
+** Possibilità di selezionare _individualmente_ per pedina se _escluderla_, inserirla come *giocatore* o inserirla come *computer*;
+* *Snakes and Ladders Board Games* (https://play.google.com/store/apps/details?id=com.idz.snakes.and.ladders.dice.board.games&hl=en_US[Link])
+** Grafica 3D;
+** Gioco a *livelli*;
+** Il _tabellone_ è sostituito con un *percorso* di una _mappa a tema_;
 
-== B. Requirements Refinement
+== B. Raffinamento dei Requisiti
+_A partire dai servizi minimali richiesti, raffinate la descrizione dei servizi offerti dal vostro applicativo. Descrivete anche I requisiti non funzionali._
+
+=== B.1 Servizi (con prioritizzazione)
+_Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quelli che ritenete siano le soluzioni concettuali necessarie. In questa fase, non fate riferimento ad alcuna tecnologia specifica. Se volete, intervistate stakeholder e collezionate dati dal web o da altre sorgenti. Dovete acquisire una conoscenza avanzata dei problemi associate ai vostri servizi. Assegnate un ID a ciascun servizio. Prioritizzate inoltre i servizi in base a due scale: Importanza alta, media, bassa. Complessità alta, media, bassa._
