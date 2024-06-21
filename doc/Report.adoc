@@ -149,23 +149,23 @@ _Descrivere gli scenari più comuni, più interessanti, o più complicati d’us
 ** Eseguire _partite con un gruppo di giocatori_
 ** Giocare a _prevedere quale pedina vincerà_ la partita
 
-=== B.4 Excluded Requirements
+=== B.4 Requisiti esclusi
 _Descrivere i servizi eventualmente i esclusi, e spiegare il perché_
 
 . _Animazioni 3D:_
-.. Animazioni lancio dadi in 3D (_Richiede l'uso di un engine 3D portando solo un miglioramento visivo, fuori dallo scopo del software_)
-.. Animazioni mazzo di carte in 3D (_Richiede l'uso di un engine 3D portando solo un miglioramento visivo, fuori dallo scopo del software_)
+.. *Animazioni lancio dadi in 3D* (_Richiede l'uso di un engine 3D portando solo un miglioramento visivo, fuori dallo scopo del software_)
+.. *Animazioni mazzo di carte in 3D* (_Richiede l'uso di un engine 3D portando solo un miglioramento visivo, fuori dallo scopo del software_)
 . _Audio_
-.. Effetti sonori (_Richiedono la creazione o licenza di effetti sonori portando solo un miglioramento visivo, fuori dallo scopo del software_)
+.. *Effetti sonori* (_Richiedono la creazione o licenza di effetti sonori portando solo un miglioramento visivo, fuori dallo scopo del software_)
 . _Simulazione:_
-.. Simulazione singola partita in multithread (_Non è richiesto eseguire simulazioni a velocità elevate per una singola partita, in più aumenta esponenzialmente la complessità del software potenzialmente senza alcun beneficio tangibile_)
-.. Simulazione di più partite rapide con diverse impostazioni con gestione in coda (_Scenario estremo non di uso comune che può essere facilmente bypassato aspettando il termine delle varie simulazioni_)
+.. *Simulazione singola partita in multithread* (_Non è richiesto eseguire simulazioni a velocità elevate per una singola partita, in più aumenta esponenzialmente la complessità del software potenzialmente senza alcun beneficio tangibile_)
+.. *Simulazione di più partite rapide con diverse impostazioni con gestione in coda* (_Scenario estremo non di uso comune che può essere facilmente bypassato aspettando il termine delle varie simulazioni_)
 . _Piattaforme di distribuzione:_
-.. Piattaforme mobile (_Software principalmente simulatilo, uso in mobilità poco utile_)
-.. Piattaforme web (_Implementazione web app fuori dagli scopi del progetto_)
+.. *Piattaforme mobile* (_Software principalmente simulatilo, uso in mobilità poco utile_)
+.. *Piattaforme web* (_Implementazione web app fuori dagli scopi del progetto_)
 . _Interazioni & Integrazioni:_
-.. API (_Potenzialmente utile per automatization di task e integrazione in altri software ma fuori dallo scopo del progetto_)
-.. Supporto a mod o plugin (_Potenzialmente utile per aggiungere funzionalità extra in modo rapido da parte dell'utente ma aumento della complessità e del rischio di introduzione di bug o vulnerabilità, con conseguente aumento della complessita per il supporto post rilascio_)
+.. *API* (_Potenzialmente utile per automatization di task e integrazione in altri software ma fuori dallo scopo del progetto_)
+.. *Supporto a mod o plugin* (_Potenzialmente utile per aggiungere funzionalità extra in modo rapido da parte dell'utente ma aumento della complessità e del rischio di introduzione di bug o vulnerabilità, con conseguente aumento della complessita per il supporto post rilascio_)
 
 === B.5 Assunzioni
 _Documenta brevemente, in questa sezione, le ipotesi/decisioni sui requisiti più rilevanti che hai dovuto prendere durante il tuo progetto_
