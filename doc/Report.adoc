@@ -173,6 +173,7 @@ _Documenta brevemente, in questa sezione, le ipotesi/decisioni sui requisiti pi�
 * Il _software_ è pensato come uno *strumento di simulazione* per tanto _l'interazione dell'utente_ durate una partita è ridotto al minimo;
 * Il _software_ ha come obbiettivo solo quello di *ricavare i dati* dalle simulazione, non quello di aiutare l'utente ad _interpretarli_, per tanto la visualizzazione di essi potrebbe risultare parziale e non esaustiva. Per questo motivo *l'esportazione dei dati* risulta essere una funzionalità _relativamente importante_ per l'obbiettivo richiesto;
 * Il _software_ è pensato per essere eseguito su *piattaforma PC* con _hardware relativamente moderno_ senza ottimizzazioni estensive sia dal punto di vista della _simulazione_ che della _GUI_;
+* Si riserva che qualsiasi dei <<B.4 Requisiti esclusi,Requisiti esclusi>> possano essere aggiunti in *versioni future* del _software_;
 
 === B.6 Use Case Diagrams
 
