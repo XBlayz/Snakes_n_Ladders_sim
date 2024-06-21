@@ -92,7 +92,9 @@ A program for simulate **Snakes & Ladders** matches with different _layer of cus
 ### Built With
 <!-- https://shields.io/ -->
 <!-- https://github.com/Ileriayo/markdown-badges -->
-* ...
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![JavaFX](https://img.shields.io/badge/javafx-%23FF0000.svg?style=for-the-badge&logo=javafx&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
