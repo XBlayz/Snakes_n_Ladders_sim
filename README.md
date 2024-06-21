@@ -7,7 +7,7 @@
 *** `XBlayz`, `Snakes_n_Ladders_sim`,
 *** `S. Scarcelli`, `protonmail.com`, `xblayz.github`,
 *** `Snakes & Ladders - Simulator`, `A program for simulate Snakes & Ladders matches`
-*** `A program for simulate Snakes & Ladders matches with different layer of customization like custom board, different rules and many more`
+*** `A program for simulate **Snakes & Ladders** matches with different _layer of customization_ like custom **board**, different **rules** and _many more_.`
 *** `MIT License`
 -->
 
@@ -83,7 +83,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-extended_A program for simulate Snakes & Ladders matches
+A program for simulate **Snakes & Ladders** matches with different _layer of customization_ like custom **board**, different **rules** and _many more_.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
