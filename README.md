@@ -102,13 +102,14 @@ A program for simulate **Snakes & Ladders** matches with different _layer of cus
 
 <!-- GETTING STARTED -->
 ## Getting Started
-...
+For compiling the project you just need to run the **Gradle** _task_: `build` and than extract the file form the `app.zip` file in the folder `app/build/distributions`, or just run the **Gradle** _task_: `run` for executing the application directly.
 
 ### Prerequisites
-...
+* **Java** `17+` (Developed in **Java** `20.0.1`)
+* **JavaFX** `21`
 
 ### Installation
-1. ...
+1. Use the `.jar` file from the build
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
