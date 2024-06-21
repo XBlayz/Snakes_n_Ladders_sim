@@ -125,7 +125,31 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 
 <!-- ROADMAP -->
 ## Roadmap
-- [ ] ...
+- [ ] Main menu _(NFR)_
+- [ ] **New simulation menu**
+  - [ ] Save settings _(FR)_
+  - [ ] Load settings _(FR)_
+  - [ ] Fast simulation _(NFR)_
+    - [ ] Multithread _(NFR)_
+- [ ] **Simulation**
+  - [ ] Manual advancement _(FR)_
+  - [ ] Automatic advancement _(FR)_
+    - [ ] Simulation speed _(NFR)_
+  - [ ] Game board _(FR)_
+  - [ ] Pawns _(FR)_
+  - [ ] Dice _(FR)_
+  - [ ] Deck of cards _(FR)_
+  - [ ] Leader board _(NFR)_
+  - [ ] End of simulation results _(FR)_
+    - [ ] Rerun fast simulation _(NFR)_
+    - [ ] Game graph _(NFR)_
+    - [ ] Save report _(NFR)_
+- [ ] **Game rules**
+  - [ ] ...
+- [ ] **Animations**
+  - [ ] Pawns movement _(NFR)_
+  - [ ] Dice roll _(NFR)_
+  - [ ] Card draw _(NFR)_
 
 See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).
 
