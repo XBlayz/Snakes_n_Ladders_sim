@@ -5,8 +5,8 @@
   - [ ] Setup demo button;
   - [ ] Update table of content;
   - [ ] Setup product screenshot;
-  - [ ] Setup and badges shield;
-  - [ ] Add info;
+  - [X] Setup and badges shield;
+  - [X] Add info;
 - [X] Add LICENSE;
 - [ ] Update CHANGELOG.md;
 
