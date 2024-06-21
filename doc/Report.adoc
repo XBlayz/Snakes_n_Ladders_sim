@@ -131,6 +131,7 @@ _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 . _Simulazione della partita:_
 .. Simulazione di più partite in maniera rapida (senza visualizzazione dei turni, solo risultato finale)
 .. Simulazione in multithread per partite multiple
+.. Impostare diverse velocità di simulazione automatiche
 . _Termine simulazione:_
 .. Rieseguire simulazione più volte in modo rapido (mantenendo le stesse impostazioni)
 .. Grafico storico punteggi dei vari giocatori durante la simulazione
