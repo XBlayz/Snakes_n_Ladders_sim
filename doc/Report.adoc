@@ -140,7 +140,13 @@ _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 === B.3 Scenari d’uso dettagliati
 _Descrivere gli scenari più comuni, più interessanti, o più complicati d’uso dei vostri servizi._
 
-* #TODO
+* *Analisi di dati in vari scenari*:
+** Analizzare quanto il _valore dei dadi_ di un giocatore contribuisce sul suo _tasso di vincita_
+** Analizzare come cambiano la _durata di ogni partita_ al _variare delle regole_
+** Analizzare quali sono le _caselle più visitate_ dai vari giocatori
+* *Gioco*:
+** Eseguire _partite con un gruppo di giocatori_
+** Giocare a _prevedere quale pedina vincerà_ la partita
 
 === B.4 Excluded Requirements
 _Descrivere i servizi eventualmente i esclusi, e spiegare il perché_
