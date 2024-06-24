@@ -184,7 +184,7 @@ _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazion
 
 === C.1 La visione statica del sistema: Diagramma dei Componenti
 
-#TODO
+#TODO: Mediator simulazione
 
 === C.2 La visione dinamica dell'architettura software: Sequence Diagram
 
