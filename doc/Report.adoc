@@ -14,10 +14,10 @@ Documento Finale (D3) | {docdate}
 ^.^|18/06/2024
 |Tentativo di uso di *Maven*, poi scartato per via di errori nella gestione della dependency di _JavaFX_, e scelta della soluzione tramite *Gradle*
 
-.^|Implementazione struttura *simulazione*
-^.^|24/06/2024
-^.^|24/06/2024
-|Uso del pattern *_MEDIATOR_*
+.^|
+^.^|//4
+^.^|//
+|
 
 |===
 
