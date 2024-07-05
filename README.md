@@ -150,8 +150,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Sigle dice rule _(FR)_
     - [ ] Doble six rule _(FR)_
   - [ ] Deck of cards _(FR)_
-    - [ ] Standard cards
-    - [ ] Extra cards
+    - [ ] Standard cards (Bench, Inn, Dice and Spring)
+    - [ ] Extra cards (Do not stop)
   - [ ] Leader board _(NFR)_
   - [ ] End of simulation results _(FR)_
     - [ ] Rerun fast simulation _(NFR)_
