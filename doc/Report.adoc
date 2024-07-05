@@ -75,12 +75,23 @@ _Descrivete in *dettaglio* i servizi offerti dal vostro Sistema, insieme a quell
 
 . _Impostazione della partita da simulare:_
 .. Interfaccia di setup (*Importanza* _media_, *Complessità* _bassa_)
+... Impostazione dimensione tabellone
+... Impostazione posizione delle caselle
 .. Salvare/caricare setup (*Importanza* _bassa_, *Complessità* _media_)
 . _Simulazione della partita:_
-.. Avanzamento automatico e manuale (*Importanza* _alta_, *Complessità* _bassa_)
+.. Avanzamento automatico e manuale dei turni (*Importanza* _alta_, *Complessità* _bassa_)
 .. Lancio dei dai (*Importanza* _alta_, *Complessità* _media_)
+... Dadi doppi o singoli
+... Regola del dado singolo
+... Regola del doppio sei
 .. Regole di movimento delle pedine (*Importanza* _alta_, *Complessità* _alta_)
+... Caselle "Scale & Serpenti"
+... Caselle "Sosta"
+... Caselle "Premio"
+... Caselle "Pesca una Carta"
 .. Mazzo di carte (*Importanza* _media_, *Complessità* _alta_)
+... Carte standard
+... Carte extra
 . _Visualizzazione dei turni simulati:_
 .. Rappresentazione del tabellone (*Importanza* _media_, *Complessità* _alta_)
 .. Rappresentazione delle pedine sul tabellone (*Importanza* _media_, *Complessità* _bassa_)
@@ -128,6 +139,9 @@ _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 .. Animazioni lancio dadi
 .. Animazioni mazzo di carte
 .. Leader board
+. _Regole:_
+.. Numero di dadi
+.. Tipologia dei dadi (numero di facce)
 . _Simulazione della partita:_
 .. Simulazione di più partite in maniera rapida (senza visualizzazione dei turni, solo risultato finale)
 .. Simulazione in multithread per partite multiple
