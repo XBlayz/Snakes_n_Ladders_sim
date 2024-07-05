@@ -140,8 +140,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Board cell settings _(FR)_
     - [ ] Snakes & Ladders cell _(FR)_
     - [ ] Special cell type _(FR)_
-      - [ ] "Parking" cell _(FR)_
-      - [ ] "Price" cell _(FR)_
+      - [ ] "Parking" cell (Bench or Inn) _(FR)_
+      - [ ] "Price" cell (Dice or Spring) _(FR)_
       - [ ] "Draw a Card" cell _(FR)_
   - [ ] Pawns _(FR)_
   - [ ] Dice _(FR)_
@@ -150,8 +150,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Sigle dice rule _(FR)_
     - [ ] Doble six rule _(FR)_
   - [ ] Deck of cards _(FR)_
-    - [ ] Standard cards (Bench, Inn, Dice and Spring)
-    - [ ] Extra cards (Do not stop)
+    - [ ] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
+    - [ ] Extra cards (Do Not Stop) _(FR)_
   - [ ] Leader board _(NFR)_
   - [ ] End of simulation results _(FR)_
     - [ ] Rerun fast simulation _(NFR)_
