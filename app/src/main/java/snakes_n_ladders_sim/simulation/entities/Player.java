@@ -1,12 +1,19 @@
 package snakes_n_ladders_sim.simulation.entities;
 
-public class Player {
+import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType;
+import snakes_n_ladders_sim.simulation.mediator.*;
+
+public class Player extends Colleague {
     private int position;
     private int blockedTurns;
 
     private int doNotStopCards;
 
-    protected Player() {
+    private PlayerMessageType message;
+
+    protected Player(Mediator mediator) {
+        super(mediator);
+
         position = 0;
         blockedTurns = 0;
         doNotStopCards = 0;
@@ -28,7 +35,10 @@ public class Player {
     public void block(int turns) {
         if(doNotStopCards > 0) {
             doNotStopCards--;
-            // TODO: Put card in the deck
+
+            setMessage(PlayerMessageType.DISCARD_DO_NOT_STOP_CARD);
+            mediator.sendMessage(this);
+
             return;
         }
 
@@ -44,5 +54,13 @@ public class Player {
 
     public void addDoNotStop() {
         doNotStopCards++;
+    }
+
+    private void setMessage(PlayerMessageType message) {
+        this.message = message;
+    }
+
+    public PlayerMessageType getMessage() {
+        return message;
     }
 }

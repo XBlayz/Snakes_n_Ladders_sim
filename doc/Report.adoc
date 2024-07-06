@@ -19,6 +19,11 @@ Documento Finale (D3) | {docdate}
 ^.^|06/07/2024
 |Spezzettamento della logica dei turni in funzioni _richiamate a catena_ e uso del pattern *Mediator* per determinare il tipo di _azione_ da eseguire tramite gli oggetti `Cell` mantenendo la responsabilità dell'esecuzione all'oggetto `Match`
 
+.^|Gestione evento di _scarto di una carta_ da parte del *giocatore* nel *mazzo*
+^.^|06/07/2024
+^.^|06/07/2024
+|Uso del pattern *Mediator* precedentemente implementato per gestire la _notifica_ da parte di un *giocatore* dell'_inserimento nel fondo del mazzo_ di una *carta*
+
 |===
 
 == A. Stato dell’Arte

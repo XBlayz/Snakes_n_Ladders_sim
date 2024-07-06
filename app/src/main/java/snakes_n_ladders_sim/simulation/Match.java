@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import snakes_n_ladders_sim.simulation.entities.*;
 import snakes_n_ladders_sim.simulation.entities.cards.*;
 import snakes_n_ladders_sim.simulation.entities.cells.*;
+import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType;
 import snakes_n_ladders_sim.simulation.mediator.*;
 
 public class Match extends Thread implements Mediator {
@@ -85,6 +86,17 @@ public class Match extends Thread implements Mediator {
         }
 
         return true;
+    }
+
+    private boolean reactToPlayer(PlayerMessageType message) {
+        switch (message) {
+            case DISCARD_DO_NOT_STOP_CARD:
+                deck.discardCard(Card.DO_NOT_STOP);
+                return true;
+
+            default:
+                throw new UnsupportedOperationException("Unimplemented message: " + message);
+        }
     }
 
     /**

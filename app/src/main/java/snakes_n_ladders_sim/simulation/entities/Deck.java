@@ -13,4 +13,9 @@ public class Deck {
         throw new UnsupportedOperationException("Unimplemented method 'drawCard'");
     }
 
+    public void discardCard(Card doNotStop) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'discardCard'");
+    }
+
 }
