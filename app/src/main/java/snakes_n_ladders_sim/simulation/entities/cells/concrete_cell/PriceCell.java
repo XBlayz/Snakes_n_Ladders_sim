@@ -14,9 +14,19 @@ public class PriceCell extends Cell {
 
     @Override
     public boolean action() {
+        return mediator.sendMessage(this);
+    }
+
+    @Override
+    public Action getAction() {
         if (isSpring) {
-            return mediator.sendMessage(Action.JUMP, -1);
+            return Action.JUMP;
         }
-        return mediator.sendMessage(Action.REROLL, -1);
+        return Action.REROLL;
+    }
+
+    @Override
+    public int getData() {
+        return -1;
     }
 }

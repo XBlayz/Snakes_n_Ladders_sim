@@ -3,9 +3,9 @@ package snakes_n_ladders_sim.simulation;
 import java.util.concurrent.TimeUnit;
 
 import snakes_n_ladders_sim.simulation.entities.*;
-import snakes_n_ladders_sim.simulation.entities.cards.Card;
-import snakes_n_ladders_sim.simulation.entities.cells.Action;
-import snakes_n_ladders_sim.simulation.mediator.Mediator;
+import snakes_n_ladders_sim.simulation.entities.cards.*;
+import snakes_n_ladders_sim.simulation.entities.cells.*;
+import snakes_n_ladders_sim.simulation.mediator.*;
 
 public class Match extends Thread implements Mediator {
     private Player[] players;
@@ -46,7 +46,19 @@ public class Match extends Thread implements Mediator {
     }
 
     @Override
-    public boolean sendMessage(Action action, int data) {
+    public boolean sendMessage(Colleague colleague) {
+        if(colleague instanceof Cell) {
+            Cell cell = (Cell)colleague;
+            return reactToCell(cell.getAction(), cell.getData());
+        }else if(colleague instanceof Player) {
+            Player player = (Player)colleague;
+            return reactToPlayer(player.getMessage());
+        }
+
+        throw new UnsupportedOperationException("Unsupported message from type: " + colleague.getClass().getName());
+    }
+
+    private boolean reactToCell(Action action, int data) {
         Card card = null;
         if (action == Action.DRAW_CARD) {
             card = deck.drawCard();
@@ -97,7 +109,7 @@ public class Match extends Thread implements Mediator {
         int position = currentPlayer.move(lastRoll); // Move the player and get the new position
 
         if(position == board.end) return false; // Check if the player won the match
-        return board.getCellAsColleague(position).action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
+        return board.getCell(position).action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
     }
 
     private void maxDiceRule() {

@@ -10,6 +10,16 @@ public class BasicCell extends Cell {
 
     @Override
     public boolean action() {
-        return mediator.sendMessage(Action.NONE, -1);
+        return mediator.sendMessage(this);
+    }
+
+    @Override
+    public Action getAction() {
+        return Action.NONE;
+    }
+
+    @Override
+    public int getData() {
+        return -1;
     }
 }

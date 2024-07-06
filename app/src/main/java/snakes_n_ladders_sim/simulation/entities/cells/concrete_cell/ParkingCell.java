@@ -14,6 +14,16 @@ public class Parking extends Cell {
 
     @Override
     public boolean action() {
-        return mediator.sendMessage(Action.BLOCK, nTurns);
+        return mediator.sendMessage(this);
+    }
+
+    @Override
+    public Action getAction() {
+        return Action.BLOCK;
+    }
+
+    @Override
+    public int getData() {
+        return nTurns;
     }
 }

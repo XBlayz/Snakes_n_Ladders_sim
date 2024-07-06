@@ -10,6 +10,16 @@ public class DrawCardCell extends Cell {
 
     @Override
     public boolean action() {
-        return mediator.sendMessage(Action.DRAW_CARD, -1);
+        return mediator.sendMessage(this);
+    }
+
+    @Override
+    public Action getAction() {
+        return Action.DRAW_CARD;
+    }
+
+    @Override
+    public int getData() {
+        return -1;
     }
 }

@@ -6,6 +6,4 @@ public abstract class Colleague {
     protected Colleague(Mediator mediator) {
         this.mediator = mediator;
     }
-
-    public abstract boolean action();
 }

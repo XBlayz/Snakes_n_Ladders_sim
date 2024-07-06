@@ -14,6 +14,16 @@ public class SnakeOrLadderCell extends Cell {
 
     @Override
     public boolean action() {
-        return mediator.sendMessage(Action.TELEPORT, position);
+        return mediator.sendMessage(this);
+    }
+
+    @Override
+    public Action getAction() {
+        return Action.TELEPORT;
+    }
+
+    @Override
+    public int getData() {
+        return position;
     }
 }

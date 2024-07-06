@@ -1,12 +1,11 @@
 package snakes_n_ladders_sim.simulation.entities;
 
 import snakes_n_ladders_sim.simulation.entities.cells.*;
-import snakes_n_ladders_sim.simulation.mediator.Colleague;
 
 public class Board {
     private int rows;
     private int columns;
-    private Colleague[][] cells;
+    private Cell[][] cells;
 
     public final int end;
 
@@ -20,7 +19,7 @@ public class Board {
         // TODO
     }
 
-    public Colleague getCellAsColleague(int position) {
+    public Cell getCell(int position) {
         int c = position % columns;
         int r = position / rows;
         return cells[r][c];

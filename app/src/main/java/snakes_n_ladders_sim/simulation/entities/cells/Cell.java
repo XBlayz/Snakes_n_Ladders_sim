@@ -6,4 +6,9 @@ public abstract class Cell extends Colleague {
     protected Cell(Mediator mediator) {
         super(mediator);
     }
+
+    public abstract boolean action();
+
+    public abstract Action getAction();
+    public abstract int getData();
 }
