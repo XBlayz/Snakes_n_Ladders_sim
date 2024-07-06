@@ -20,8 +20,8 @@ public class Board {
     }
 
     public Cell getCell(int position) {
-        int c = position % columns;
-        int r = position / rows;
+        int c = position % columns; // Calculate the column index
+        int r = position / rows; // Calculate the row index
         return cells[r][c];
     }
 }

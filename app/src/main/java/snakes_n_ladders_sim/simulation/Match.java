@@ -50,10 +50,10 @@ public class Match extends Thread implements Mediator {
     public boolean sendMessage(Colleague colleague) {
         if(colleague instanceof Cell) {
             Cell cell = (Cell)colleague;
-            return reactToCell(cell.getAction(), cell.getData());
+            return reactToCell(cell.getAction(), cell.getData()); // Execute the action of the cell
         }else if(colleague instanceof Player) {
             Player player = (Player)colleague;
-            return reactToPlayer(player.getMessage());
+            return reactToPlayer(player.getMessage()); // Execute the action of the player
         }
 
         throw new UnsupportedOperationException("Unsupported message from type: " + colleague.getClass().getName());
@@ -62,26 +62,26 @@ public class Match extends Thread implements Mediator {
     private boolean reactToCell(Action action, int data) {
         Card card = null;
         if (action == Action.DRAW_CARD) {
-            card = deck.drawCard();
+            card = deck.drawCard(); // Draw a card
         }
 
-        if (action == Action.TELEPORT) {
+        if (action == Action.TELEPORT) { // Snake or ladder cell action
             currentPlayer.setPosition(data);
             return currentPlayer.getPosition() != board.end;
-        }else if (action == Action.REROLL || card == Card.DICE) {
+        }else if (action == Action.REROLL || card == Card.DICE) { // Price cell action (dice) or dice card
             return rollDice();
-        }else if(action == Action.JUMP || card == Card.SPRING) {
+        }else if(action == Action.JUMP || card == Card.SPRING) { // Price cell action (spring) or spring card
             return movePlayer();
-        }else if(action == Action.BLOCK) {
+        }else if(action == Action.BLOCK) { // Parking cell action
             currentPlayer.block(data);
             return currentPlayer.getPosition() != board.end;
-        }else if(card == Card.BENCH) {
+        }else if(card == Card.BENCH) { // Bench card draw
             currentPlayer.block(1);
             return currentPlayer.getPosition() != board.end;
-        }else if(card == Card.INN){
+        }else if(card == Card.INN){ // Inn card draw
             currentPlayer.block(3);
             return currentPlayer.getPosition() != board.end;
-        }else if(card == Card.DO_NOT_STOP) {
+        }else if(card == Card.DO_NOT_STOP) { // Do not stop card draw
             currentPlayer.addDoNotStop();
         }
 
@@ -90,7 +90,7 @@ public class Match extends Thread implements Mediator {
 
     private boolean reactToPlayer(PlayerMessageType message) {
         switch (message) {
-            case DISCARD_DO_NOT_STOP_CARD:
+            case DISCARD_DO_NOT_STOP_CARD: // Do not stop card discard in the bottom of the deck
                 deck.discardCard(Card.DO_NOT_STOP);
                 return true;
 

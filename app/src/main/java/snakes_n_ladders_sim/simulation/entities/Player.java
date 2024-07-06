@@ -33,21 +33,21 @@ public class Player extends Colleague {
     }
 
     public void block(int turns) {
-        if(doNotStopCards > 0) {
-            doNotStopCards--;
+        if(doNotStopCards > 0) { // Check if the player has do not stop cards
+            doNotStopCards--; // Remove a do not stop card
 
-            setMessage(PlayerMessageType.DISCARD_DO_NOT_STOP_CARD);
-            mediator.sendMessage(this);
+            setMessage(PlayerMessageType.DISCARD_DO_NOT_STOP_CARD); // Set the message to sand to the mediator
+            mediator.sendMessage(this); // Send the message to the mediator for discarding a do not stop card
 
             return;
         }
 
-        blockedTurns += turns;
+        blockedTurns += turns; // Add the turns to the blocked turns
     }
 
     public boolean isBlocked() {
-        boolean isBlock = blockedTurns > 0;
-        if(isBlock) blockedTurns--;
+        boolean isBlock = blockedTurns > 0; // Check if the player is blocked
+        if(isBlock) blockedTurns--; // Decrement the blocked turns
 
         return isBlock;
     }
