@@ -1,36 +1,48 @@
 package snakes_n_ladders_sim.simulation.entities;
 
 public class Player {
+    private int position;
+    private int blockedTurns;
+
+    private int doNotStopCards;
 
     protected Player() {
-        //TODO Auto-generated constructor stub
+        position = 0;
+        blockedTurns = 0;
+        doNotStopCards = 0;
     }
 
     public int move(int movement) {
-        // TODO
+        position += movement;
         return getPosition();
     }
 
     public void setPosition(int position) {
-        // TODO
+        this.position = position;
     }
 
     public int getPosition() {
-        // TODO
-        return 0;
+        return position;
     }
 
     public void block(int turns) {
-        // TODO
+        if(doNotStopCards > 0) {
+            doNotStopCards--;
+            // TODO: Put card in the deck
+            return;
+        }
+
+        blockedTurns += turns;
     }
 
     public boolean isBlocked() {
-        // TODO
-        return false;
+        boolean isBlock = blockedTurns > 0;
+        if(isBlock) blockedTurns--;
+
+        return isBlock;
     }
 
     public void addDoNotStop() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addDoNotStop'");
+        doNotStopCards++;
     }
 }
