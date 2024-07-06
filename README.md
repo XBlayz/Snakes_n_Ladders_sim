@@ -133,16 +133,16 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Multithread _(NFR)_
 - [ ] **Simulation**
   - [ ] Manual advancement _(FR)_
-  - [ ] Automatic advancement _(FR)_
-    - [ ] Simulation speed _(NFR)_
+  - [X] Automatic advancement _(FR)_
+    - [X] Simulation speed _(NFR)_
   - [ ] Game board _(FR)_
     - [ ] Custom board dimensions _(FR)_
     - [ ] Board cell settings _(FR)_
-    - [ ] Snakes & Ladders cell _(FR)_
-    - [ ] Special cell type _(FR)_
-      - [ ] "Parking" cell (Bench or Inn) _(FR)_
-      - [ ] "Price" cell (Dice or Spring) _(FR)_
-      - [ ] "Draw a Card" cell _(FR)_
+    - [X] Snakes & Ladders cell _(FR)_
+    - [X] Special cell type _(FR)_
+      - [X] "Parking" cell (Bench or Inn) _(FR)_
+      - [X] "Price" cell (Dice or Spring) _(FR)_
+      - [X] "Draw a Card" cell _(FR)_
   - [ ] Pawns _(FR)_
   - [ ] Dice _(FR)_
     - [ ] Dice number _(NFR)_
@@ -150,8 +150,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Sigle dice rule _(FR)_
     - [ ] Doble six rule _(FR)_
   - [ ] Deck of cards _(FR)_
-    - [ ] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
-    - [ ] Extra cards (Do Not Stop) _(FR)_
+    - [X] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
+    - [X] Extra cards (Do Not Stop) _(FR)_
   - [ ] Leader board _(NFR)_
   - [ ] End of simulation results _(FR)_
     - [ ] Rerun fast simulation _(NFR)_

@@ -14,10 +14,10 @@ Documento Finale (D3) | {docdate}
 ^.^|18/06/2024
 |Tentativo di uso di *Maven*, poi scartato per via di errori nella gestione della dependency di _JavaFX_, e scelta della soluzione tramite *Gradle*
 
-.^|
-^.^|//4
-^.^|//
-|
+.^|Esecuzione delle _azioni_ delle varie celle sui *giocatori* permettendo _catene di eventi_
+^.^|04/07/2024
+^.^|06/07/2024
+|Spezzettamento della logica dei turni in funzioni _richiamate a catena_ e uso del pattern *Mediator* per determinare il tipo di _azione_ da eseguire tramite gli oggetti `Cell` mantenendo la responsabilità dell'esecuzione all'oggetto `Match`
 
 |===
 
