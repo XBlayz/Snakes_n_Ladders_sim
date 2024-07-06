@@ -163,6 +163,9 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [ ] Pawns movement _(NFR)_
   - [ ] Dice roll _(NFR)_
   - [ ] Card draw _(NFR)_
+- [ ] _DEBUG_
+  - [ ] Logger
+  - [ ] Test
 
 See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).
 
