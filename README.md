@@ -157,8 +157,6 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [ ] Rerun fast simulation _(NFR)_
     - [ ] Game graph _(NFR)_
     - [ ] Save report _(NFR)_
-- [ ] **Game rules**
-  - [ ] ...
 - [ ] **Animations**
   - [ ] Pawns movement _(NFR)_
   - [ ] Dice roll _(NFR)_
