@@ -9,14 +9,17 @@ import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType
 import snakes_n_ladders_sim.simulation.mediator.*;
 
 public class Match extends Thread implements Mediator {
-    private Player[] players;
-    private Board board;
-    private Dice dice;
-    private Deck deck;
+    // Match entities
+    private final Player[] players;
+    private final Board board;
+    private final Dice dice;
+    private final Deck deck;
 
+    // Turn advancement settings
     private boolean autoRun = true;
     private int delay = 500;
 
+    // Current player properties
     private Player currentPlayer;
     private int lastRoll;
     private boolean endTurn;
@@ -121,6 +124,8 @@ public class Match extends Thread implements Mediator {
         int position = currentPlayer.move(lastRoll); // Move the player and get the new position
 
         if(position == board.end) return false; // Check if the player won the match
+        if(position > board.end) position = currentPlayer.setPosition(position-board.end); // If the player is outside the board, wrap it back to the beginning
+
         return board.getCell(position).action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
     }
 

@@ -3,10 +3,12 @@ package snakes_n_ladders_sim.simulation.entities;
 import snakes_n_ladders_sim.simulation.entities.cells.*;
 
 public class Board {
-    private int rows;
-    private int columns;
+    // Board properties
+    private final int rows;
+    private final int columns;
     private Cell[][] cells;
 
+    // Board constants
     public final int end;
 
     public Board(int rows, int columns) {

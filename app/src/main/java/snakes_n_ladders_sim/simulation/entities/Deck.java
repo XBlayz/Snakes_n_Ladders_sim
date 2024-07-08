@@ -6,10 +6,11 @@ import java.util.LinkedList;
 import snakes_n_ladders_sim.simulation.entities.cards.Card;
 
 public class Deck {
+    // Cards collection
     private Queue<Card> cards = new LinkedList<>();
 
-    protected Deck() {
-        //TODO Auto-generated constructor stub
+    public Deck() {
+        //TODO
     }
 
     public Card drawCard() {

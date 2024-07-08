@@ -4,14 +4,17 @@ import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType
 import snakes_n_ladders_sim.simulation.mediator.*;
 
 public class Player extends Colleague {
+    // Player properties
     private int position;
     private int blockedTurns;
 
+    // Player cards
     private int doNotStopCards;
 
+    // Player message (mediator)
     private PlayerMessageType message;
 
-    protected Player(Mediator mediator) {
+    public Player(Mediator mediator) {
         super(mediator);
 
         position = 0;
@@ -24,8 +27,9 @@ public class Player extends Colleague {
         return getPosition();
     }
 
-    public void setPosition(int position) {
+    public int setPosition(int position) {
         this.position = position;
+        return getPosition();
     }
 
     public int getPosition() {
