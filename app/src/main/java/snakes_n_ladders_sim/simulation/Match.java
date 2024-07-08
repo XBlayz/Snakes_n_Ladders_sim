@@ -115,7 +115,7 @@ public class Match extends Thread implements Mediator {
     }
 
     private boolean rollDice() {
-        lastRoll = dice.roll(currentPlayer.getPosition());
+        lastRoll = dice.roll(currentPlayer.getPosition()>=board.end-dice.numberOfSides);
         maxDiceRule();
         return movePlayer(); // Move the player and execute the next step
     }
@@ -130,7 +130,7 @@ public class Match extends Thread implements Mediator {
     }
 
     private void maxDiceRule() {
-        endTurn = lastRoll < dice.maxValue() || !dice.isMaxDiceRule(); // Check if the player rolled the maximum value and, if the rule is active, the player has another turn
+        endTurn = lastRoll < dice.maxDice || !dice.isMaxDiceRuleOn; // Check if the player rolled the maximum value and, if the rule is active, the player has another turn
     }
 
     private void waitNextTurn() {
