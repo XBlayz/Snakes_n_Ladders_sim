@@ -18,7 +18,7 @@ public class Dice {
     public Dice(int numberOfSides, int numberOfDice, boolean isSingleDiceRuleOn, boolean isMaxDiceRuleOn) {
         this.numberOfSides = numberOfSides;
         this.numberOfDice = numberOfDice;
-        rng = new Random(); // TODO: set seed
+        rng = new Random(System.currentTimeMillis());
 
         maxDice = numberOfSides * numberOfDice;
 
