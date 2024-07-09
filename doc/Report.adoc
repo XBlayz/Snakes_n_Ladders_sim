@@ -24,6 +24,11 @@ Documento Finale (D3) | {docdate}
 ^.^|06/07/2024
 |Uso del pattern *Mediator* precedentemente implementato per gestire la _notifica_ da parte di un *giocatore* dell'_inserimento nel fondo del mazzo_ di una *carta*
 
+.^|Gestione costruzione del *tabellone* in più modi _differenti_
+^.^|09/07/2024
+^.^|##/07/2024
+|Uso del pattern *Strategy* con la definizione di diversi _oggetti_ (_strategie_) per la costruzione del *tabellone*
+
 |===
 
 == A. Stato dell’Arte
@@ -203,7 +208,7 @@ _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazion
 
 === C.1 La visione statica del sistema: Diagramma dei Componenti
 
-#TODO: Mediator simulazione
+#TODO: Mediator simulazione, Strategy creazione tabellone
 
 === C.2 La visione dinamica dell'architettura software: Sequence Diagram
 
@@ -217,7 +222,7 @@ _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui s
 == E. Scelte Progettuali (Design Decisions)
 _Documenta qui le 5 decisioni progettuali più importanti che hai dovuto prendere. È possibile utilizzare sia una specifica testuale che schematica._
 
-#TODO
+#TODO: Gestione delle entità partecipanti alla partita, Definizioni delle entità della simulazione, Costruzione del tabellone
 
 == F. Progettazione di Basso Livello
 
