@@ -136,20 +136,20 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [X] Automatic advancement _(FR)_
     - [X] Simulation speed _(NFR)_
   - [ ] Game board _(FR)_
-    - [ ] Custom board dimensions _(FR)_
+    - [X] Custom board dimensions _(FR)_
     - [ ] Board cell settings _(FR)_
     - [X] Snakes & Ladders cell _(FR)_
     - [X] Special cell type _(FR)_
       - [X] "Parking" cell (Bench or Inn) _(FR)_
       - [X] "Price" cell (Dice or Spring) _(FR)_
       - [X] "Draw a Card" cell _(FR)_
-  - [ ] Pawns _(FR)_
-  - [ ] Dice _(FR)_
-    - [ ] Dice number _(NFR)_
-    - [ ] Dice type _(NFR)_
-    - [ ] Sigle dice rule _(FR)_
-    - [ ] Doble six rule _(FR)_
-  - [ ] Deck of cards _(FR)_
+  - [X] Players _(FR)_
+  - [X] Dice _(FR)_
+    - [X] Dice number _(NFR)_
+    - [X] Dice type _(NFR)_
+    - [X] Sigle dice rule _(FR)_
+    - [X] Doble six rule _(FR)_
+  - [X] Deck of cards _(FR)_
     - [X] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
     - [X] Extra cards (Do Not Stop) _(FR)_
   - [ ] Leader board _(NFR)_
