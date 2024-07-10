@@ -18,7 +18,7 @@ public class Board {
         this.columns = columns;
         this.cells = boardBuildStrategy.buildBoard(rows, columns, mediator);
 
-        this.end = rows * columns - 1;
+        this.end = rows * columns;
     }
 
     public Cell getCell(int position) {
