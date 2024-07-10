@@ -56,9 +56,13 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             assignCell(board, (cellToFill-1) % columns, (cellToFill-1) / rows, rows, columns, rng);
         }
 
-        // Assign remaining cells
-        for(int p: emptyCellPositionList) {
-            addCell((p-1) % columns, (p-1) / rows, board, new BasicCell(mediator));
+        // Assign the rest of the cells with BasicCell
+        for (int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[i].length; j++) {
+                if(board[i][j] == null) {
+                    board[i][j] = new BasicCell(mediator);
+                }
+            }
         }
 
         return board;
