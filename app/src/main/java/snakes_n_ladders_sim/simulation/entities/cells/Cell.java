@@ -15,4 +15,8 @@ public abstract class Cell extends Colleague {
     public String toString() {
         return getAction().toString();
     }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
 }

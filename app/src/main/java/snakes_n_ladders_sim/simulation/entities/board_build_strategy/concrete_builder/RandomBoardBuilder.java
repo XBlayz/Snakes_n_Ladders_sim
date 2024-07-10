@@ -20,15 +20,15 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
 
     private RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio) {
         if(isPriceOn) {
-            specialCells.add(new PriceCell(mediator, false)); // Reroll
-            specialCells.add(new PriceCell(mediator, true)); // Spring
+            specialCells.add(new PriceCell(null, false)); // Reroll
+            specialCells.add(new PriceCell(null, true)); // Spring
         }
         if(isParkingOn) {
-            specialCells.add(new ParkingCell(mediator, 1)); // Bench
-            specialCells.add(new ParkingCell(mediator, 3)); // Inn
+            specialCells.add(new ParkingCell(null, 1)); // Bench
+            specialCells.add(new ParkingCell(null, 3)); // Inn
         }
         if(isCardsOn) {
-            specialCells.add(new DrawCardCell(mediator)); // Draw Card
+            specialCells.add(new DrawCardCell(null)); // Draw Card
         }
 
         emptyCellPositionList = new ArrayList<>();
@@ -37,12 +37,15 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     }
 
     public RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn) {
-        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.1+(isCardsOn ? 1 : 0)*0.03+(isParkingOn ? 1 : 0)*0.03+(isPriceOn ? 1 : 0)*0.03));
+        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.11+(isCardsOn ? 1 : 0)*0.03+(isParkingOn ? 1 : 0)*0.03+(isPriceOn ? 1 : 0)*0.03));
     }
 
     @Override
     public Cell[][] buildBoard(int rows, int columns, Mediator mediatorRif) {
         mediator = mediatorRif;
+        for (Cell c : specialCells) {
+            c.setMediator(mediator);
+        }
 
         nSpecialCells = Math.round(rows*columns*fillingRatio);
         Random rng = new Random(System.currentTimeMillis());
