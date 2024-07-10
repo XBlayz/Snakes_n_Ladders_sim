@@ -139,6 +139,7 @@ public class Match extends Thread implements Mediator {
     private boolean turn() {
         if(currentPlayer.isBlocked()) {
             System.out.println("Player " + (currentPlayerIndex + 1) + " is blocked"); // TODO: replace with logger
+            endTurn = true;
             return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
         }
 
