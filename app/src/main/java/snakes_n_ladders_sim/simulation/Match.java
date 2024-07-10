@@ -25,6 +25,7 @@ public class Match extends Thread implements Mediator {
 
     // Current player properties
     private Player currentPlayer;
+    private int currentPlayerIndex;
     private int lastRoll;
     private boolean endTurn;
 
@@ -61,6 +62,7 @@ public class Match extends Thread implements Mediator {
 
             i++;
             currentPlayer = players[i];
+            currentPlayerIndex = i;
             do {
                 matchContinues = turn(); // Execute a player turn and get the result whether the player won the match
             } while(!endTurn);
@@ -131,19 +133,25 @@ public class Match extends Thread implements Mediator {
      * @return True if the match continues, false if the player has won and the match is over
      */
     private boolean turn() {
-        if(currentPlayer.isBlocked()) return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
+        if(currentPlayer.isBlocked()) {
+            System.out.println("Player " + (currentPlayerIndex + 1) + " is blocked"); // TODO: replace with logger
+            return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
+        }
 
         return rollDice(); // Roll the dice and execute the next step
     }
 
     private boolean rollDice() {
         lastRoll = dice.roll(currentPlayer.getPosition()>=board.end-dice.numberOfSides);
+        System.out.println("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll); // TODO: replace with logger
+
         maxDiceRule();
         return movePlayer(); // Move the player and execute the next step
     }
 
     private boolean movePlayer() {
         int position = currentPlayer.move(lastRoll); // Move the player and get the new position
+        System.out.println("Player " + (currentPlayerIndex + 1) + " moved to: " + position); // TODO: replace with logger
 
         if(position == board.end) return false; // Check if the player won the match
         if(position > board.end) position = currentPlayer.setPosition(position-board.end); // If the player is outside the board, wrap it back to the beginning
