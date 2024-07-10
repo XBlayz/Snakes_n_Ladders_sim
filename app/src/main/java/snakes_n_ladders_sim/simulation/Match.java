@@ -1,12 +1,16 @@
 package snakes_n_ladders_sim.simulation;
 
 import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.ArrayList;
 
 import snakes_n_ladders_sim.simulation.entities.*;
+import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.cards.*;
 import snakes_n_ladders_sim.simulation.entities.cells.*;
 import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType;
 import snakes_n_ladders_sim.simulation.mediator.*;
+import snakes_n_ladders_sim.utility.Tuple;
 
 public class Match extends Thread implements Mediator {
     // Match entities
@@ -24,8 +28,26 @@ public class Match extends Thread implements Mediator {
     private int lastRoll;
     private boolean endTurn;
 
-    public Match() {
-        // TODO
+    public Match(int nPlayer, int rows, int columns, BoardBuildStrategy boardBuildStrategy, int numberOfSides, int numberOfDice, boolean isSingleDiceRuleOn, boolean isMaxDiceRuleOn, int numberOfEachCard) {
+        // Create all players
+        players = new Player[nPlayer];
+        for (int i = 0; i < nPlayer; i++) {
+            players[i] = new Player(this);
+        }
+
+        // Create the board
+        board = new Board(rows, columns, boardBuildStrategy, this);
+
+        // Create the dice
+        dice = new Dice(numberOfSides, numberOfDice, isSingleDiceRuleOn, isMaxDiceRuleOn);
+
+        // Create the deck
+        List<Tuple<Card, Integer>> cardList = new ArrayList<>();
+        cardList.add(new Tuple<Card,Integer>(Card.BENCH, Integer.valueOf(numberOfEachCard)));
+        cardList.add(new Tuple<Card,Integer>(Card.INN, Integer.valueOf(numberOfEachCard)));
+        cardList.add(new Tuple<Card,Integer>(Card.DICE, Integer.valueOf(numberOfEachCard)));
+        cardList.add(new Tuple<Card,Integer>(Card.SPRING, Integer.valueOf(numberOfEachCard)));
+        deck = new Deck(cardList);
     }
 
     @Override
