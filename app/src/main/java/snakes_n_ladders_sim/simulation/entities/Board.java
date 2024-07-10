@@ -18,6 +18,14 @@ public class Board {
         this.columns = columns;
         this.cells = boardBuildStrategy.buildBoard(rows, columns, mediator);
 
+        System.out.println("Board has been created!"); // TODO: replace with logger
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                System.out.print(cells[i][j].toString() + "|"); // TODO: replace with logger
+            }
+            System.out.println(); // TODO: replace with logger
+        }
+
         this.end = rows * columns;
     }
 
