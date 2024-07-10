@@ -22,7 +22,7 @@ public class App extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         BoardBuildStrategy boardBuildStrategy = new RandomBoardBuilder(true, true, true);
         Match match = new Match(5, 10, 10, boardBuildStrategy, 6, 2, true, true, 3);
 
