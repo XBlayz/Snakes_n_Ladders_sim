@@ -1,12 +1,12 @@
 package snakes_n_ladders_sim.simulation.entities.cells;
 
 public enum Action {
-    NONE("NONE"),
-    TELEPORT("TP"),
+    NONE(" NONE "),
+    TELEPORT("  TP  "),
     REROLL("REROLL"),
-    JUMP("JUMP"),
-    BLOCK("BLOCK"),
-    DRAW_CARD("DRAW_CARD");
+    JUMP(" JUMP "),
+    BLOCK(" STOP "),
+    DRAW_CARD(" CARD ");
 
     private final String name;
 
