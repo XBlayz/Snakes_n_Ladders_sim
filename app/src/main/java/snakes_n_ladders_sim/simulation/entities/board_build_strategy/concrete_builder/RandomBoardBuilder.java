@@ -135,7 +135,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     private int getRandomEmptyCellPositionSnake(int minPos, Random rng) {
         int split = -1;
         // Find the first empty cell position before minPos
-        for (int i = emptyCellPositionList.size(); i > 0; i--) {
+        for (int i = emptyCellPositionList.size()-1; i > 0; i--) {
             if(emptyCellPositionList.get(i) <= minPos) {
                 split = i;
                 break;
