@@ -160,6 +160,7 @@ public class Match extends Thread implements Mediator {
         if(position == board.end) return false; // Check if the player won the match
         if(position > board.end) position = currentPlayer.setPosition(position-board.end); // If the player is outside the board, wrap it back to the beginning
 
+        System.out.print("Player " + (currentPlayerIndex + 1) + " is on "); // TODO: replace with logger
         return board.getCell(position).action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
     }
 

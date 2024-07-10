@@ -14,6 +14,11 @@ public class PriceCell extends Cell {
 
     @Override
     public boolean action() {
+        if (isSpring) {
+            System.out.println("[Spring cell]"); // TODO: replace with logger
+        } else {
+            System.out.println("[Reroll cell]"); // TODO: replace with logger
+        }
         return mediator.sendMessage(this);
     }
 

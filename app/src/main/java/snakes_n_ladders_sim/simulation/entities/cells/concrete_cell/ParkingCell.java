@@ -14,6 +14,7 @@ public class ParkingCell extends Cell {
 
     @Override
     public boolean action() {
+        System.out.println("[Parking cell (" + nTurns + ")]"); // TODO: replace with logger
         return mediator.sendMessage(this);
     }
 

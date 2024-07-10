@@ -14,6 +14,7 @@ public class SnakeOrLadderCell extends Cell {
 
     @Override
     public boolean action() {
+        System.out.println("[Snake or ladder cell (" + position + ")]"); // TODO: replace with logger
         return mediator.sendMessage(this);
     }
 

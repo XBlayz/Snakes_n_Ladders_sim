@@ -11,4 +11,8 @@ public abstract class Cell extends Colleague {
 
     public abstract Action getAction();
     public abstract int getData();
+
+    public String toString() {
+        return getAction().toString();
+    }
 }
