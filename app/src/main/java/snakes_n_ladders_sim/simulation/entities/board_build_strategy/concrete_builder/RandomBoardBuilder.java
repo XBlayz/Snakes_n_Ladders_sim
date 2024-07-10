@@ -37,7 +37,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     }
 
     public RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn) {
-        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.15+(isCardsOn ? 1 : 0)*0.05+(isParkingOn ? 1 : 0)*0.05+(isPriceOn ? 1 : 0)*0.05));
+        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.1+(isCardsOn ? 1 : 0)*0.03+(isParkingOn ? 1 : 0)*0.03+(isPriceOn ? 1 : 0)*0.03));
     }
 
     @Override
