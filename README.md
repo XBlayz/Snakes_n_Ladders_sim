@@ -129,8 +129,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 - [ ] **New simulation menu**
   - [ ] Save settings _(FR)_
   - [ ] Load settings _(FR)_
-  - [ ] Fast simulation _(NFR)_
-    - [ ] Multithread _(NFR)_
+    - [X] Multithread _(NFR)_
 - [ ] **Simulation**
   - [ ] Manual advancement _(FR)_
   - [X] Automatic advancement _(FR)_
@@ -152,11 +151,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [X] Deck of cards _(FR)_
     - [X] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
     - [X] Extra cards (Do Not Stop) _(FR)_
-  - [ ] Leader board _(NFR)_
   - [ ] End of simulation results _(FR)_
-    - [ ] Rerun fast simulation _(NFR)_
-    - [ ] Game graph _(NFR)_
-    - [ ] Save report _(NFR)_
+    - [ ] Report log _(NFR)_
 - [ ] **Animations**
   - [ ] Pawns movement _(NFR)_
   - [ ] Dice roll _(NFR)_

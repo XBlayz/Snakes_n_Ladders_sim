@@ -148,18 +148,14 @@ _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 .. Animazioni movimento pedine
 .. Animazioni lancio dadi
 .. Animazioni mazzo di carte
-.. Leader board
 . _Regole:_
 .. Numero di dadi
 .. Tipologia dei dadi (numero di facce)
 . _Simulazione della partita:_
-.. Simulazione di più partite in maniera rapida (senza visualizzazione dei turni, solo risultato finale)
-.. Simulazione in multithread per partite multiple
+.. Simulazione partite su thread separato
 .. Impostare diverse velocità di simulazione automatiche
 . _Termine simulazione:_
-.. Rieseguire simulazione più volte in modo rapido (mantenendo le stesse impostazioni)
-.. Grafico storico punteggi dei vari giocatori durante la simulazione
-.. Salvare report fine simulazione
+.. Salvare log della simulazione
 
 
 === B.3 Scenari d’uso dettagliati
@@ -212,7 +208,7 @@ _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazion
 
 === C.2 La visione dinamica dell'architettura software: Sequence Diagram
 
-#TODO
+#TODO: Game turn
 
 == D. Dati e loro modellazione  (se il sistema si interfaccia con un DBMS)
 _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui sopra. Modellate tali dati tramite un ER o similari. Specificate se e quali di tali dati sono gia’ forniti da applicativi esistenti._
@@ -222,11 +218,11 @@ _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui s
 == E. Scelte Progettuali (Design Decisions)
 _Documenta qui le 5 decisioni progettuali più importanti che hai dovuto prendere. È possibile utilizzare sia una specifica testuale che schematica._
 
-#TODO: Gestione delle entità partecipanti alla partita, Definizioni delle entità della simulazione, Costruzione del tabellone
+#TODO: Gestione delle entità partecipanti alla partita, Definizioni delle entità della simulazione, Costruzione del tabellone, Comunicazione GUI-Simulazione, Pattern State non usato per gestire i turni
 
 == F. Progettazione di Basso Livello
 
-#TODO
+#TODO: Celle, Carte, Costruttore Tabellone random, Turni e Azioni
 
 == G. Spiegare come il progetto soddisfa i requisiti funzionali (RF) e quelli non funzionali (RNF)
 _Riporta in questa sezione in che modo la progettazione architettonica e di basso livello prodotta soddisfa gli RF e gli RNF._
