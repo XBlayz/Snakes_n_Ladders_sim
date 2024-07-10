@@ -89,12 +89,12 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         if(i < 1) {
             // If is the first row, it's a Ladder
             int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
-            addCell(tpPosition-1 % columns, tpPosition-1 / rows, board, new BasicCell(mediator));
+            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition);
         }else if(i > rows-2) {
             // If is the last row, it's a Snake
             int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-            addCell(tpPosition-1 % columns, tpPosition-1 / rows, board, new BasicCell(mediator));
+            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition);
         }
 
@@ -102,12 +102,12 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         if(rng.nextFloat() <= 0.5) {
             // Snake
             int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-            addCell(tpPosition-1 % columns, tpPosition-1 / rows, board, new BasicCell(mediator));
+            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition);
         }
         // Ladder
         int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
-        addCell(tpPosition-1 % columns, tpPosition-1 / rows, board, new BasicCell(mediator));
+        addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
         return new SnakeOrLadderCell(mediator, tpPosition);
     }
 
