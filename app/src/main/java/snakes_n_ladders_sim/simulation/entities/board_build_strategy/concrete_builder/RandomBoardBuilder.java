@@ -17,7 +17,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
 
     private List<Integer> emptyCellPositionList;
 
-    private RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio, Mediator mediator) {
+    private RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio) {
         if(isPriceOn) {
             specialCells.add(new PriceCell(mediator, false)); // Reroll
             specialCells.add(new PriceCell(mediator, true)); // Spring
@@ -35,12 +35,14 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         this.fillingRatio = fillingRatio;
     }
 
-    public RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, Mediator mediator) {
-        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.15+(isCardsOn ? 1 : 0)*0.05+(isParkingOn ? 1 : 0)*0.05+(isPriceOn ? 1 : 0)*0.05), mediator);
+    public RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn) {
+        this(isPriceOn, isParkingOn, isCardsOn, (float)(0.15+(isCardsOn ? 1 : 0)*0.05+(isParkingOn ? 1 : 0)*0.05+(isPriceOn ? 1 : 0)*0.05));
     }
 
     @Override
-    public Cell[][] buildBoard(int rows, int columns) {
+    public Cell[][] buildBoard(int rows, int columns, Mediator mediatorRif) {
+        mediator = mediatorRif;
+
         int nSpecialCells = Math.round(rows*columns*fillingRatio);
         Random rng = new Random(System.currentTimeMillis());
 
