@@ -61,6 +61,10 @@ public class Match extends Thread implements Mediator {
             }
 
             i++;
+            if (i >= players.length) {
+                i = 0;
+            }
+
             currentPlayer = players[i];
             currentPlayerIndex = i;
             do {
