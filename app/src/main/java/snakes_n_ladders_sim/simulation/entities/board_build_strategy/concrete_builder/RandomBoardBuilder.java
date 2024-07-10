@@ -16,6 +16,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     private float fillingRatio;
 
     private List<Integer> emptyCellPositionList;
+    private int nSpecialCells;
 
     private RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio) {
         if(isPriceOn) {
@@ -43,35 +44,38 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     public Cell[][] buildBoard(int rows, int columns, Mediator mediatorRif) {
         mediator = mediatorRif;
 
-        int nSpecialCells = Math.round(rows*columns*fillingRatio);
+        nSpecialCells = Math.round(rows*columns*fillingRatio);
         Random rng = new Random(System.currentTimeMillis());
 
         Cell[][] board = new Cell[rows][columns];
         initializeEmptyCellPositionList(rows, columns);
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                // For each cell
-                // If nSpecialCells > 0 and is not the last cell, fillingRatio% chance to be a special cell over a basic cell
-                if(rng.nextFloat() <= fillingRatio && nSpecialCells > 0 && !((i+1==rows) && (j+1==columns))) {
-                    // 50% chance to be a special cell over Snake or Ladder
-                    // If the special cell list is empty or null, it will be always a Snake or Ladder
-                    if(rng.nextFloat() <= 0.5 || specialCells.isEmpty() || specialCells == null) {
-                        addCell(i, j, board, setSnakeOrLadder(board, i, rows, columns, rng, mediator));
-                    }else {
-                        addCell(i, j, board, specialCells.get(rng.nextInt(specialCells.size())));
-                    }
-                    nSpecialCells--;
-                }else {
-                    // If the cell wan not already filled, fill it with a basic cell
-                    if (board[i][j] == null) {
-                        addCell(i, j, board, new BasicCell(mediator));
-                    }
-                }
-            }
+        while (nSpecialCells > 0) {
+            // Get a random empty cell to fill
+            int cellToFill = emptyCellPositionList.get(rng.nextInt(emptyCellPositionList.size()));
+            assignCell(board, (cellToFill-1) % columns, (cellToFill-1) / rows, rows, columns, rng);
         }
 
         return board;
+    }
+
+    private void assignCell(Cell[][] board, int i, int j, int rows, int columns, Random rng) {
+        // If nSpecialCells > 0 and is not the last cell, fillingRatio% chance to be a special cell over a basic cell
+        if(rng.nextFloat() <= fillingRatio && nSpecialCells > 0 && !((i+1==rows) && (j+1==columns))) {
+            // 50% chance to be a special cell over Snake or Ladder
+            // If the special cell list is empty or null, it will be always a Snake or Ladder
+            if(rng.nextFloat() <= 0.5 || specialCells.isEmpty() || specialCells == null) {
+                addCell(i, j, board, setSnakeOrLadder(board, i, rows, columns, rng, mediator));
+            }else {
+                addCell(i, j, board, specialCells.get(rng.nextInt(specialCells.size())));
+            }
+            nSpecialCells--;
+        }else {
+            // If the cell wan not already filled, fill it with a basic cell
+            if (board[i][j] == null) {
+                addCell(i, j, board, new BasicCell(mediator));
+            }
+        }
     }
 
     private void initializeEmptyCellPositionList(int rows, int columns) {
