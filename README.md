@@ -135,9 +135,9 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [ ] Manual advancement _(FR)_
   - [X] Automatic advancement _(FR)_
     - [X] Simulation speed _(NFR)_
-  - [ ] Game board _(FR)_
+  - [X] Game board _(FR)_
     - [X] Custom board dimensions _(FR)_
-    - [ ] Board cell settings _(FR)_
+    - [X] Board cell settings _(FR)_
     - [X] Snakes & Ladders cell _(FR)_
     - [X] Special cell type _(FR)_
       - [X] "Parking" cell (Bench or Inn) _(FR)_
