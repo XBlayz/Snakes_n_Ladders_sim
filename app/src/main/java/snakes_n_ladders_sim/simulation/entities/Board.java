@@ -1,5 +1,6 @@
 package snakes_n_ladders_sim.simulation.entities;
 
+import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.cells.*;
 
 public class Board {
@@ -11,14 +12,12 @@ public class Board {
     // Board constants
     public final int end;
 
-    public Board(int rows, int columns) {
+    public Board(int rows, int columns, BoardBuildStrategy boardBuildStrategy) {
         this.rows = rows;
         this.columns = columns;
-        this.cells = new Cell[rows][columns];
+        this.cells = boardBuildStrategy.buildBoard(rows, columns);
 
         this.end = rows * columns - 1;
-
-        // TODO
     }
 
     public Cell getCell(int position) {
