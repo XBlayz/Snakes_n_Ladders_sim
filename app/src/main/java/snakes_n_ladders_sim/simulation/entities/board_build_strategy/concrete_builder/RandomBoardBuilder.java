@@ -18,7 +18,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     private List<Integer> emptyCellPositionList;
     private int nSpecialCells;
 
-    private RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio) {
+    protected RandomBoardBuilder(boolean isPriceOn, boolean isParkingOn, boolean isCardsOn, float fillingRatio) {
         if(isPriceOn) {
             specialCells.add(new PriceCell(null, false)); // Reroll
             specialCells.add(new PriceCell(null, true)); // Spring
