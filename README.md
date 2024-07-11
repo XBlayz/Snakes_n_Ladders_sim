@@ -106,7 +106,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 
 ### Prerequisites
 * **Java** `17+` (Developed in **Java** `20.0.1`)
-* **JavaFX** `21`
+* **JavaFX** `21` (_Gradle_ dependency)
+* **Jackson** `2.17.2` (_Gradle_ dependency)
 
 ### Installation
 1. Use the `.jar` file from the build
