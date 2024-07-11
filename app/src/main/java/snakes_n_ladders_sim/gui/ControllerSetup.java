@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -15,13 +15,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.concrete_builder.RandomBoardBuilder;
+import snakes_n_ladders_sim.utility.MatchConfig;
 import snakes_n_ladders_sim.simulation.Match;
 
 public class ControllerSetup implements Initializable {
@@ -112,20 +122,92 @@ public class ControllerSetup implements Initializable {
     }
 
     public void startSim() {
+        // TODO: Start match scene
+
+        buildMatch(players.getValue(), rows.getValue(), columns.getValue(), boardBuilder.getValue(), priceCells.isSelected(), stopCells.isSelected(), cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), nCards.getValue()).start();
+
+        System.out.println("Simulation started"); // TODO: replace with logger
+    }
+
+    public void save() {
+        // YAML parser
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        MatchConfig matchConfig = new MatchConfig(players.getValue(), rows.getValue(), columns.getValue(), boardBuilder.getValue(), priceCells.isSelected(), stopCells.isSelected(), cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), nCards.getValue());
+
+        // File Chooser window
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Salva match");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        // Set extension filter
+        ExtensionFilter yamExtensionFilter = new ExtensionFilter("YAML", "*.yaml");
+        fileChooser.getExtensionFilters().add(yamExtensionFilter);
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(stage);
+
+        if(file != null) {
+            // Try to write file
+            try {
+                mapper.writeValue(file, matchConfig);
+                System.out.println("Match saved to: " + file.getAbsolutePath()); // TODO: replace with logger
+            } catch (IOException e) {
+                System.err.println("Match not saved as IOException raised"); // TODO: replace with logger
+            }
+        }else{
+            System.out.println("Match not saved"); // TODO: replace with logger
+        }
+    }
+
+    public void load() {
+        // File Chooser window
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Carica match");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        // Set extension filter
+        ExtensionFilter yamExtensionFilter = new ExtensionFilter("YAML", "*.yaml");
+        fileChooser.getExtensionFilters().add(yamExtensionFilter);
+        // Show save file dialog
+        File file = fileChooser.showOpenDialog(stage);
+
+        // YAML parser
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        mapper.findAndRegisterModules();
+
+        // Try to read file
+        try {
+            MatchConfig matchConfig = mapper.readValue(file, MatchConfig.class);
+            players.getValueFactory().setValue(matchConfig.players);
+            rows.getValueFactory().setValue(matchConfig.rows);
+            columns.getValueFactory().setValue(matchConfig.columns);
+            boardBuilder.getValueFactory().setValue(matchConfig.boardBuildStrategyString);
+            priceCells.setSelected(matchConfig.isPriceCellOn);
+            stopCells.setSelected(matchConfig.isStopCellOn);
+            cards.setSelected(matchConfig.isCardOn);
+            extraCards.setSelected(matchConfig.isExtraCardsOn);
+            diceType.getValueFactory().setValue(matchConfig.diceType);
+            nDice.getValueFactory().setValue(matchConfig.numberOfDice);
+            singleDice.setSelected(matchConfig.isSingleDiceRuleOn);
+            doubleDice.setSelected(matchConfig.isMaxDiceRuleOn);
+            nCards.getValueFactory().setValue(matchConfig.numberOfEachCard);
+
+            System.out.println("Match loaded"); // TODO: replace with logger
+        } catch(StreamReadException | DatabindException e) {
+            Alert a = new Alert(AlertType.ERROR);
+            a.setContentText("Il file selezionato non è valido");
+            a.show();
+        } catch(IOException e) {
+            System.err.println("Match not loaded as IOException raised"); // TODO: replace with logger
+        }
+    }
+
+    private Match buildMatch(int players, int rows, int columns, String boardBuildStrategyString, boolean isPriceCellOn, boolean isStopCellOn, boolean isCardOn, boolean isExtraCardsOn, int diceType, int nDice, boolean isSingleDiceRuleOn, boolean iMaxDiceRuleOn, int nCards) {
         BoardBuildStrategy boardBuildStrategy;
-        if(boardBuilder.getValue().equals(boardBuilderList.get(0))) {
-            boardBuildStrategy = new RandomBoardBuilder(priceCells.isSelected(), stopCells.isSelected(), cards.isSelected());
+        if(boardBuildStrategyString.equals(boardBuilderList.get(0))) {
+            boardBuildStrategy = new RandomBoardBuilder(isPriceCellOn, isStopCellOn, isCardOn);
         }else{
             throw new IllegalStateException("Unexpected value: " + boardBuilder.getValue());
         }
 
-        Match match = new Match(players.getValue(), rows.getValue(), columns.getValue(), boardBuildStrategy, cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), 3);
-
-        match.start();
-    }
-
-    public void save() {
-
+        return new Match(players, rows, columns, boardBuildStrategy, isCardOn, isExtraCardsOn, diceType, nDice, isSingleDiceRuleOn, iMaxDiceRuleOn, nCards);
     }
 
     // If cards is checked, unlock extraCards checkbox
@@ -158,6 +240,6 @@ public class ControllerSetup implements Initializable {
         stage.setMinHeight(400);
         stage.show();
 
-        System.out.println("Main menu"); // TODO: replace with logger
+        System.out.println("Back to Main menu"); // TODO: replace with logger
     }
 }

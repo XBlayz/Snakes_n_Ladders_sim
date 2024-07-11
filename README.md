@@ -128,8 +128,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 ## Roadmap
 - [X] Main menu _(NFR)_
 - [X] **New simulation menu**
-  - [ ] Save settings _(FR)_
-  - [ ] Load settings _(FR)_
+  - [X] Save settings _(FR)_
+  - [X] Load settings _(FR)_
     - [X] Multithread _(NFR)_
 - [ ] **Simulation**
   - [ ] Main simulation windows _(FR)_
