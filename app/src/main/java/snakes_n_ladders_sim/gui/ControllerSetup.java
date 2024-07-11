@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.stage.Stage;
+
+import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
+import snakes_n_ladders_sim.simulation.entities.board_build_strategy.concrete_builder.RandomBoardBuilder;
+import snakes_n_ladders_sim.simulation.Match;
 
 public class ControllerSetup implements Initializable {
     // Scene switch properties
@@ -35,6 +41,7 @@ public class ControllerSetup implements Initializable {
     private Spinner<Integer> columns;
     @FXML
     private Spinner<String> boardBuilder;
+    List<String> boardBuilderList = List.of("Random");
     // dice
     @FXML
     private Spinner<Integer> diceType;
@@ -54,6 +61,8 @@ public class ControllerSetup implements Initializable {
     private CheckBox cards;
     @FXML
     private CheckBox extraCards;
+    @FXML
+    private Spinner<Integer> nCards;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,18 +79,61 @@ public class ControllerSetup implements Initializable {
         rows.setValueFactory(valueFactoryRows);
         columns.setValueFactory(valueFactoryColumns);
 
-        // TODO: Setup board builder spinner
+        // Setup board builder spinner
+        SpinnerValueFactory<String> valueFactoryBoard = new SpinnerValueFactory.ListSpinnerValueFactory<>(FXCollections.observableList(boardBuilderList));
+        boardBuilder.setValueFactory(valueFactoryBoard);
+        boardBuilder.setEditable(false);
 
-        // TODO: Setup dice spinner
+        // Setup dice spinner
+        SpinnerValueFactory<Integer> valueFactoryDiceType = new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 6);
+        SpinnerValueFactory<Integer> valueFactoryDiceNumber = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 2);
+        valueFactoryDiceType.setValue(6);
+        valueFactoryDiceNumber.setValue(2);
+        diceType.setValueFactory(valueFactoryDiceType);
+        nDice.setValueFactory(valueFactoryDiceNumber);
 
-        // TODO: Setup dice checkboxes
+        // If nDice > 1, unlock singleDice and doubleDice checkbox
+        nDice.valueProperty().addListener((obs, oldValue, newValue) -> {
+            if(newValue > 1) {
+                singleDice.setDisable(false);
+                doubleDice.setDisable(false);
+            }else{
+                singleDice.setSelected(false);
+                singleDice.setDisable(true);
+                doubleDice.setSelected(false);
+                doubleDice.setDisable(true);
+            }
+        });
 
-        // TODO: Setup special cells checkboxes
+        // Setup nCards spinner
+        SpinnerValueFactory<Integer> valueFactoryCardsNumber = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5);
+        valueFactoryCardsNumber.setValue(3);
+        nCards.setValueFactory(valueFactoryCardsNumber);
+    }
 
-        // TODO: Setup cards checkboxes
+    public void startSim(ActionEvent event) {
+        BoardBuildStrategy boardBuildStrategy;
+        if(boardBuilder.getValue().equals(boardBuilderList.get(0))) {
+            boardBuildStrategy = new RandomBoardBuilder(priceCells.isSelected(), stopCells.isSelected(), cards.isSelected());
+        }else{
+            throw new IllegalStateException("Unexpected value: " + boardBuilder.getValue());
+        }
 
-        // TODO: If nDice > 1, unlock singleDice and doubleDice checkbox
-        // TODO: If cards is checked, unlock extraCards checkbox
+        Match match = new Match(players.getValue(), rows.getValue(), columns.getValue(), boardBuildStrategy, cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), 3);
+
+        match.start();
+    }
+
+    // If cards is checked, unlock extraCards checkbox
+    public void cardsListener() {
+        if(cards.isSelected()) {
+            extraCards.setDisable(false);
+            nCards.setDisable(false);
+        }else{
+            extraCards.setSelected(false);
+            extraCards.setDisable(true);
+            nCards.setDisable(true);
+        }
     }
 
     public void backToMenu(ActionEvent event) throws IOException {

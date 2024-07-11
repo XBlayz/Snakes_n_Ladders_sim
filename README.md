@@ -126,7 +126,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 <!-- ROADMAP -->
 ## Roadmap
 - [X] Main menu _(NFR)_
-- [ ] **New simulation menu**
+- [X] **New simulation menu**
   - [ ] Save settings _(FR)_
   - [ ] Load settings _(FR)_
     - [X] Multithread _(NFR)_

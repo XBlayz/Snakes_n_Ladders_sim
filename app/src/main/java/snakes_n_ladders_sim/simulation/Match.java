@@ -29,7 +29,7 @@ public class Match extends Thread implements Mediator {
     private int lastRoll;
     private boolean endTurn;
 
-    public Match(int nPlayer, int rows, int columns, BoardBuildStrategy boardBuildStrategy, int numberOfSides, int numberOfDice, boolean isSingleDiceRuleOn, boolean isMaxDiceRuleOn, int numberOfEachCard) {
+    public Match(int nPlayer, int rows, int columns, BoardBuildStrategy boardBuildStrategy, boolean isCardsOn, boolean isExtraCardsOn, int numberOfSides, int numberOfDice, boolean isSingleDiceRuleOn, boolean isMaxDiceRuleOn, int numberOfEachCard) {
         // Create all players
         players = new Player[nPlayer];
         for (int i = 0; i < nPlayer; i++) {
@@ -44,11 +44,20 @@ public class Match extends Thread implements Mediator {
 
         // Create the deck
         List<Tuple<Card, Integer>> cardList = new ArrayList<>();
-        cardList.add(new Tuple<Card,Integer>(Card.BENCH, Integer.valueOf(numberOfEachCard)));
-        cardList.add(new Tuple<Card,Integer>(Card.INN, Integer.valueOf(numberOfEachCard)));
-        cardList.add(new Tuple<Card,Integer>(Card.DICE, Integer.valueOf(numberOfEachCard)));
-        cardList.add(new Tuple<Card,Integer>(Card.SPRING, Integer.valueOf(numberOfEachCard)));
-        deck = new Deck(cardList);
+        if(isCardsOn) {
+            cardList.add(new Tuple<>(Card.BENCH, Integer.valueOf(numberOfEachCard)));
+            cardList.add(new Tuple<>(Card.INN, Integer.valueOf(numberOfEachCard)));
+            cardList.add(new Tuple<>(Card.DICE, Integer.valueOf(numberOfEachCard)));
+            cardList.add(new Tuple<>(Card.SPRING, Integer.valueOf(numberOfEachCard)));
+        }
+        if (isExtraCardsOn) {
+            cardList.add(new Tuple<>(Card.DO_NOT_STOP, Integer.valueOf(numberOfEachCard)));
+        }
+        if (!cardList.isEmpty()) {
+            deck = new Deck(cardList);
+        } else {
+            deck = null;
+        }
     }
 
     @Override
@@ -92,7 +101,7 @@ public class Match extends Thread implements Mediator {
 
     private boolean reactToCell(Action action, int data) {
         Card card = null;
-        if (action == Action.DRAW_CARD) {
+        if (action == Action.DRAW_CARD && deck != null) {
             card = deck.drawCard(); // Draw a card
         }
 

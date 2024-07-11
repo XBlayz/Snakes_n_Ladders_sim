@@ -7,18 +7,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakes_n_ladders_sim.gui.ControllerSetup">
-   <bottom>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToMenu" text="Back" BorderPane.alignment="BOTTOM_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Creazione nuova simulazione" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -30,7 +24,7 @@
       </Text>
    </top>
    <center>
-      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="300.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity">
                <children>
@@ -107,7 +101,7 @@
                   <Insets top="7.0" />
                </FlowPane.margin>
             </HBox>
-            <VBox prefHeight="200.0" prefWidth="187.0">
+            <VBox prefHeight="181.0" prefWidth="187.0">
                <children>
                   <CheckBox fx:id="singleDice" mnemonicParsing="false" text="Regola del &quot;Dado singolo&quot;">
                      <VBox.margin>
@@ -129,12 +123,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox fx:id="cards" mnemonicParsing="false" text="Attiva &quot;Carte&quot;">
+                  <CheckBox fx:id="cards" mnemonicParsing="false" onAction="#cardsListener" text="Attiva &quot;Carte&quot;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox fx:id="extraCards" mnemonicParsing="false" text="Aggiungi &quot;Carte Extra&quot;">
+                  <CheckBox fx:id="extraCards" disable="true" mnemonicParsing="false" text="Aggiungi &quot;Carte Extra&quot;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
@@ -144,7 +138,24 @@
                   <Insets top="15.0" />
                </FlowPane.margin>
             </VBox>
+            <Spinner fx:id="nCards" disable="true" editable="true" prefWidth="90.0" />
          </children>
       </FlowPane>
    </center>
+   <bottom>
+      <StackPane>
+         <children>
+            <Button mnemonicParsing="false" onAction="#startSim" text="Avvia Simulazione">
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToMenu" text="Back" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </StackPane.margin>
+            </Button>
+         </children>
+      </StackPane>
+   </bottom>
 </BorderPane>

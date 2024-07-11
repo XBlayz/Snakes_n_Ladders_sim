@@ -10,10 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
-import snakes_n_ladders_sim.simulation.entities.board_build_strategy.concrete_builder.RandomBoardBuilder;
-import snakes_n_ladders_sim.simulation.Match;
-
 public class App extends Application {
 
     @Override
@@ -32,13 +28,8 @@ public class App extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         launch(args);
-
-        //BoardBuildStrategy boardBuildStrategy = new RandomBoardBuilder(true, true, true);
-        //Match match = new Match(5, 10, 10, boardBuildStrategy, 6, 2, true, true, 3);
-
-        //match.start();
     }
 
 }
