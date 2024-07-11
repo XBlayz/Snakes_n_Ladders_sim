@@ -27,10 +27,12 @@ public class ControllerMainMenu {
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
         // Set scene
-        scene = new Scene(root, 600, 400);
+        scene = new Scene(root);
 
         // Set stage
         stage.setScene(scene);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
         stage.show();
 
         System.out.println("New sim"); // TODO: replace with logger
@@ -46,10 +48,12 @@ public class ControllerMainMenu {
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
         // Set scene
-        scene = new Scene(root, 600, 400);
+        scene = new Scene(root);
 
         // Set stage
         stage.setScene(scene);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
         stage.show();
 
         System.out.println("Load sim"); // TODO: replace with logger
@@ -65,10 +69,12 @@ public class ControllerMainMenu {
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
         // Set scene
-        scene = new Scene(root, 600, 400);
+        scene = new Scene(root);
 
         // Set stage
         stage.setScene(scene);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
         stage.show();
 
         System.out.println("Main menu"); // TODO: replace with logger

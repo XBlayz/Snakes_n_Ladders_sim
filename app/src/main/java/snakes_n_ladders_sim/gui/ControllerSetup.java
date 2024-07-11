@@ -111,7 +111,7 @@ public class ControllerSetup implements Initializable {
         nCards.setValueFactory(valueFactoryCardsNumber);
     }
 
-    public void startSim(ActionEvent event) {
+    public void startSim() {
         BoardBuildStrategy boardBuildStrategy;
         if(boardBuilder.getValue().equals(boardBuilderList.get(0))) {
             boardBuildStrategy = new RandomBoardBuilder(priceCells.isSelected(), stopCells.isSelected(), cards.isSelected());
@@ -146,10 +146,12 @@ public class ControllerSetup implements Initializable {
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
         // Set scene
-        scene = new Scene(root, 600, 400);
+        scene = new Scene(root);
 
         // Set stage
         stage.setScene(scene);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
         stage.show();
 
         System.out.println("Main menu"); // TODO: replace with logger
