@@ -108,6 +108,8 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 * **Java** `17+` (Developed in **Java** `20.0.1`)
 * **JavaFX** `21` (_Gradle_ dependency)
 * **Jackson** `2.17.2` (_Gradle_ dependency)
+* **Logback** `1.5.6` (_Gradle_ dependency)
+* **Lombok** `1.18.34` (_Gradle_ dependency)
 
 ### Installation
 1. Use the `.jar` file from the build
@@ -160,7 +162,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [ ] Dice roll _(NFR)_
   - [ ] Card draw _(NFR)_
 - [ ] _DEBUG_
-  - [ ] Logger
+  - [X] Logger
   - [ ] Test
 
 See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).

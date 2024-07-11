@@ -1,8 +1,10 @@
 package snakes_n_ladders_sim.simulation;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
-import java.util.ArrayList;
+
+import lombok.extern.slf4j.Slf4j;
 
 import snakes_n_ladders_sim.simulation.entities.*;
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
@@ -12,6 +14,7 @@ import snakes_n_ladders_sim.simulation.entities.player_message.PlayerMessageType
 import snakes_n_ladders_sim.simulation.mediator.*;
 import snakes_n_ladders_sim.utility.Tuple;
 
+@Slf4j
 public class Match extends Thread implements Mediator {
     // Match entities
     private final Player[] players;
@@ -55,6 +58,7 @@ public class Match extends Thread implements Mediator {
         }
         if (!cardList.isEmpty()) {
             deck = new Deck(cardList);
+            log.info(deck.toString());
         } else {
             deck = null;
         }
@@ -103,6 +107,7 @@ public class Match extends Thread implements Mediator {
         Card card = null;
         if (action == Action.DRAW_CARD && deck != null) {
             card = deck.drawCard(); // Draw a card
+            log.info("Player " + (currentPlayerIndex+1) + " drew: " + card.toString());
         }
 
         if (action == Action.TELEPORT) { // Snake or ladder cell action
@@ -132,6 +137,7 @@ public class Match extends Thread implements Mediator {
         switch (message) {
             case DISCARD_DO_NOT_STOP_CARD: // Do not stop card discard in the bottom of the deck
                 deck.discardCard(Card.DO_NOT_STOP);
+                log.info("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString());
                 return true;
 
             default:
@@ -147,7 +153,7 @@ public class Match extends Thread implements Mediator {
      */
     private boolean turn() {
         if(currentPlayer.isBlocked()) {
-            System.out.println("Player " + (currentPlayerIndex + 1) + " is blocked"); // TODO: replace with logger
+            log.info("Player " + (currentPlayerIndex + 1) + " is blocked");
             endTurn = true;
             return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
         }
@@ -157,7 +163,7 @@ public class Match extends Thread implements Mediator {
 
     private boolean rollDice() {
         lastRoll = dice.roll(currentPlayer.getPosition()>=board.end-dice.numberOfSides);
-        System.out.println("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll); // TODO: replace with logger
+        log.info("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll);
 
         maxDiceRule();
         return movePlayer(); // Move the player and execute the next step
@@ -165,13 +171,14 @@ public class Match extends Thread implements Mediator {
 
     private boolean movePlayer() {
         int position = currentPlayer.move(lastRoll); // Move the player and get the new position
-        System.out.println("Player " + (currentPlayerIndex + 1) + " moved to: " + position); // TODO: replace with logger
+        log.info("Player " + (currentPlayerIndex + 1) + " moved to: " + position);
 
         if(position == board.end) return false; // Check if the player won the match
         if(position > board.end) position = currentPlayer.setPosition(position-board.end); // If the player is outside the board, wrap it back to the beginning
 
-        System.out.print("Player " + (currentPlayerIndex + 1) + " is on "); // TODO: replace with logger
-        return board.getCell(position).action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
+        Cell cell = board.getCell(position);
+        log.info("Player " + (currentPlayerIndex + 1) + " is on: " + cell.toString());
+        return cell.action(); // Execute the action of the cell and return true if the match continues, false if the player has won and the match is over
     }
 
     private void maxDiceRule() {
@@ -187,12 +194,12 @@ public class Match extends Thread implements Mediator {
             TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
-            System.err.println("Error: " + ie); // TODO: replace with logger
+            log.error("Error: " + ie);
         }
     }
 
     private void printResults(int i) {
         // TODO: show the match results
-        System.out.println("Player " + (i + 1) + " has won!"); // TODO: replace with logger
+        log.info("Player " + (i + 1) + " has won!");
     }
 }

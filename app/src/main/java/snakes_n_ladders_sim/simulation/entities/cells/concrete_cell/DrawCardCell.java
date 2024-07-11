@@ -10,7 +10,6 @@ public class DrawCardCell extends Cell {
 
     @Override
     public boolean action() {
-        System.out.println("(Draw card cell)"); // TODO: replace with logger
         return mediator.sendMessage(this);
     }
 

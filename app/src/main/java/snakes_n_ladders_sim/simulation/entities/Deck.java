@@ -42,4 +42,13 @@ public class Deck {
         cards.add(card);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder deckString = new StringBuilder("Deck:\n");
+        for (Card card : cards) {
+            deckString.append(card.toString()).append("\n");
+        }
+        deckString.append("-END-");
+        return deckString.toString();
+    }
 }

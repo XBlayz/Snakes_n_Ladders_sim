@@ -107,12 +107,12 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
                 // If is the first row, it's a Ladder
                 int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
                 addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-                return new SnakeOrLadderCell(mediator, tpPosition);
+                return new SnakeOrLadderCell(mediator, tpPosition, true);
             }else if(i > rows-2) {
                 // If is the last row, it's a Snake
                 int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
                 addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-                return new SnakeOrLadderCell(mediator, tpPosition);
+                return new SnakeOrLadderCell(mediator, tpPosition, false);
             }
 
             // 50% chance to be a Snake over a Ladder
@@ -120,12 +120,12 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
                 // Snake
                 int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
                 addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-                return new SnakeOrLadderCell(mediator, tpPosition);
+                return new SnakeOrLadderCell(mediator, tpPosition, false);
             }
             // Ladder
             int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
             addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-            return new SnakeOrLadderCell(mediator, tpPosition);
+            return new SnakeOrLadderCell(mediator, tpPosition, true);
         }catch(ImpossibleCellException e) {
             return new BasicCell(mediator);
         }

@@ -13,7 +13,7 @@ public abstract class Cell extends Colleague {
     public abstract int getData();
 
     public String toString() {
-        return getAction().toString();
+        return "[" + getAction().toString() + "]";
     }
 
     public void setMediator(Mediator mediator) {

@@ -14,7 +14,6 @@ public class ParkingCell extends Cell {
 
     @Override
     public boolean action() {
-        System.out.println("[Parking cell (" + nTurns + ")]"); // TODO: replace with logger
         return mediator.sendMessage(this);
     }
 
@@ -26,5 +25,15 @@ public class ParkingCell extends Cell {
     @Override
     public int getData() {
         return nTurns;
+    }
+
+    @Override
+    public String toString() {
+        if(nTurns == 1) {
+            return "[Bench]";
+        }else if(nTurns == 3) {
+            return "[Inn]";
+        }
+        return "[Block (" + nTurns + ")]";
     }
 }

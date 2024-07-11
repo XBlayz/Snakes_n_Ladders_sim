@@ -2,6 +2,9 @@ package snakes_n_ladders_sim.simulation.entities;
 
 import java.util.Random;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Dice {
     // Dice properties
     public final int numberOfSides;
@@ -30,10 +33,15 @@ public class Dice {
         int roll = 0;
         if(isSingleDiceRuleOn && isBoardLastNCells) {
             roll = rng.nextInt(numberOfSides) + 1; // Single dice rule
+            log.info("Dice (single): " + roll);
         }else{
+            StringBuilder rollsString = new StringBuilder("Dice: ");
             for (int i = 0; i < numberOfDice; i++) {
                 roll += rng.nextInt(numberOfSides) + 1; // Normal dice roll
+                rollsString.append(roll).append("+");
             }
+            rollsString.deleteCharAt(rollsString.length() - 1);
+            log.info(rollsString.toString());
         }
 
         return roll;

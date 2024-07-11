@@ -10,7 +10,6 @@ public class BasicCell extends Cell {
 
     @Override
     public boolean action() {
-        System.out.println("(Basic cell)"); // TODO: replace with logger
         return mediator.sendMessage(this);
     }
 
