@@ -83,7 +83,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             }
             nSpecialCells--;
         }else {
-            // If the cell was not already filled, fill it with a basic cell
+            // If the cell wa not already filled, fill it with a basic cell
             if (board[i][j] == null) {
                 addCell(i, j, board, new BasicCell(mediator));
             }
@@ -102,29 +102,33 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     }
 
     private Cell setSnakeOrLadder(Cell[][] board,int i, int rows, int columns, Random rng, Mediator mediator) {
-        if(i < 1) {
-            // If is the first row, it's a Ladder
+        try {
+            if(i < 1) {
+                // If is the first row, it's a Ladder
+                int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
+                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                return new SnakeOrLadderCell(mediator, tpPosition);
+            }else if(i > rows-2) {
+                // If is the last row, it's a Snake
+                int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
+                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                return new SnakeOrLadderCell(mediator, tpPosition);
+            }
+
+            // 50% chance to be a Snake over a Ladder
+            if(rng.nextFloat() <= 0.5) {
+                // Snake
+                int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
+                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                return new SnakeOrLadderCell(mediator, tpPosition);
+            }
+            // Ladder
             int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
             addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition);
-        }else if(i > rows-2) {
-            // If is the last row, it's a Snake
-            int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-            return new SnakeOrLadderCell(mediator, tpPosition);
+        }catch(ImpossibleCellException e) {
+            return new BasicCell(mediator);
         }
-
-        // 50% chance to be a Snake over a Ladder
-        if(rng.nextFloat() <= 0.5) {
-            // Snake
-            int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-            return new SnakeOrLadderCell(mediator, tpPosition);
-        }
-        // Ladder
-        int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
-        addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
-        return new SnakeOrLadderCell(mediator, tpPosition);
     }
 
     // Get a random empty cell position after a Ladder minPos (first cell on the next row)
@@ -139,7 +143,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         }
 
         if(split == -1) {
-            throw new RuntimeException("Board construction error, impossible to find a random empty cell position for ladder");
+            throw new ImpossibleCellException("Board construction error, impossible to find a random empty cell position for ladder");
         }
 
         // Get a random empty cell position after minPos
@@ -159,11 +163,17 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         }
 
         if(split == -1) {
-            throw new RuntimeException("Board construction error, impossible to find a random empty cell position for ladder");
+            throw new ImpossibleCellException("Board construction error, impossible to find a random empty cell position for ladder");
         }
 
         // Get a random empty cell position before minPos
         List<Integer> tempList = new ArrayList<>(emptyCellPositionList.subList(0, split));
         return tempList.get(rng.nextInt(tempList.size()));
+    }
+
+    private static class ImpossibleCellException extends RuntimeException {
+        public ImpossibleCellException(String message) {
+            super(message);
+        }
     }
 }
