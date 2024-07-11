@@ -83,7 +83,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             }
             nSpecialCells--;
         }else {
-            // If the cell wan not already filled, fill it with a basic cell
+            // If the cell was not already filled, fill it with a basic cell
             if (board[i][j] == null) {
                 addCell(i, j, board, new BasicCell(mediator));
             }
