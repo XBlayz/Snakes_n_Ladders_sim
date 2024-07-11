@@ -131,6 +131,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [ ] Load settings _(FR)_
     - [X] Multithread _(NFR)_
 - [ ] **Simulation**
+  - [ ] Main simulation windows _(FR)_
   - [ ] Manual advancement _(FR)_
   - [X] Automatic advancement _(FR)_
     - [X] Simulation speed _(NFR)_
