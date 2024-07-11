@@ -34,7 +34,23 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+
+    finalizedBy 'openReport'
 }
+
+tasks.register('openReport') {
+    doLast {
+        exec {
+            commandLine 'cmd', '/c', 'start file:///A:/Utenti/stefa/Documents/GitHub/Snakes_n_Ladders_sim/app/build/reports/tests/test/index.html'
+        }
+    }
+}
+
 
 javafx {
     version = "21"
