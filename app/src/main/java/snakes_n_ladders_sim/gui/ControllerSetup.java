@@ -124,6 +124,10 @@ public class ControllerSetup implements Initializable {
         match.start();
     }
 
+    public void save() {
+
+    }
+
     // If cards is checked, unlock extraCards checkbox
     public void cardsListener() {
         if(cards.isSelected()) {
