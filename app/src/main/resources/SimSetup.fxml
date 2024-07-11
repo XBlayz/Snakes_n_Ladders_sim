@@ -139,11 +139,23 @@
                </FlowPane.margin>
             </VBox>
             <Spinner fx:id="nCards" disable="true" editable="true" prefWidth="90.0" />
-            <Button mnemonicParsing="false" text="Salva">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="58.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#save" text="Salva">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#load" text="Carica">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
                <FlowPane.margin>
                   <Insets left="100.0" />
                </FlowPane.margin>
-            </Button>
+            </VBox>
          </children>
       </FlowPane>
    </center>

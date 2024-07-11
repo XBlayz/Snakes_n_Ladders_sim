@@ -59,27 +59,6 @@ public class ControllerMainMenu {
         System.out.println("Load sim"); // TODO: replace with logger
     }
 
-    public void backToMenu(ActionEvent event) throws IOException {
-        // Load root node from FXML file (MainMenu)
-        FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/MainMenu.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        root = fxmlLoader.load(fileInputStream);
-
-        // Get stage
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-
-        // Set scene
-        scene = new Scene(root);
-
-        // Set stage
-        stage.setScene(scene);
-        stage.setMinWidth(600);
-        stage.setMinHeight(400);
-        stage.show();
-
-        System.out.println("Main menu"); // TODO: replace with logger
-    }
-
     public void exit(ActionEvent event) {
         // Get stage
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
