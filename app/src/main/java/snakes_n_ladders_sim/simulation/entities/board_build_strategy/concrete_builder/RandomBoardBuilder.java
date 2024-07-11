@@ -1,14 +1,17 @@
 package snakes_n_ladders_sim.simulation.entities.board_build_strategy.concrete_builder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.ArrayList;
+
+import lombok.extern.slf4j.Slf4j;
 
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.cells.Cell;
 import snakes_n_ladders_sim.simulation.entities.cells.concrete_cell.*;
 import snakes_n_ladders_sim.simulation.mediator.Mediator;
 
+@Slf4j
 public class RandomBoardBuilder implements BoardBuildStrategy {
     private Mediator mediator;
 
@@ -127,6 +130,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition, true);
         }catch(ImpossibleCellException e) {
+            log.warn("Impossible to add a snake or ladder to the board", e);
             return new BasicCell(mediator);
         }
     }
