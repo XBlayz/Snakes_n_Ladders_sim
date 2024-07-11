@@ -58,7 +58,6 @@ public class Match extends Thread implements Mediator {
         }
         if (!cardList.isEmpty()) {
             deck = new Deck(cardList);
-            log.info(deck.toString());
         } else {
             deck = null;
         }
@@ -66,6 +65,12 @@ public class Match extends Thread implements Mediator {
 
     @Override
     public void run() {
+        // TODO: Log match rules
+        // TODO: Log player info
+        // TODO: Log board info
+        // TODO: Log dice info
+        log.info(deck.toString());
+
         boolean matchContinues = true;
         int i = -1;
         do {
