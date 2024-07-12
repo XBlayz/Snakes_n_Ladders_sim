@@ -155,7 +155,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
   - [X] Deck of cards _(FR)_
     - [X] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
     - [X] Extra cards (Do Not Stop) _(FR)_
-  - [ ] End of simulation results _(FR)_
+  - [X] End of simulation results _(FR)_
     - [X] Report log _(NFR)_
 - [ ] _DEBUG_
   - [X] Logger

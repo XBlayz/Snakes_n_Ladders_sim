@@ -130,7 +130,7 @@ public class Match extends Thread implements Mediator {
         if (action == Action.DRAW_CARD && deck != null) {
             card = deck.drawCard(); // Draw a card
             String cardName = card.toString();
-            Platform.runLater(() -> controller.appendText("Carta pescata: " + cardName));
+            Platform.runLater(() -> controller.appendText("Carta pescata:\n" + cardName));
             log.info("Player " + (currentPlayerIndex+1) + " drew: " + cardName);
         }
 
@@ -163,7 +163,7 @@ public class Match extends Thread implements Mediator {
         switch (message) {
             case DISCARD_DO_NOT_STOP_CARD: // Do not stop card discard in the bottom of the deck
                 deck.discardCard(Card.DO_NOT_STOP);
-                Platform.runLater(() -> controller.appendText("Usa carta: " + Card.DO_NOT_STOP.toString()));
+                Platform.runLater(() -> controller.appendText("Usa carta:\n" + Card.DO_NOT_STOP.toString()));
                 log.info("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString());
                 return true;
 
@@ -255,8 +255,8 @@ public class Match extends Thread implements Mediator {
     }
 
     private void printResults(int i) {
-        // TODO: show the match results
-        Platform.runLater(() -> controller.printText("Player " + (i + 1) + " has won!")); // TODO
+        Platform.runLater(() -> controller.printText("Il giocatore " + (i + 1) + " ha vinto!"));
+        Platform.runLater(() -> controller.printResults(i));
         log.info("Player " + (i + 1) + " has won!");
     }
 

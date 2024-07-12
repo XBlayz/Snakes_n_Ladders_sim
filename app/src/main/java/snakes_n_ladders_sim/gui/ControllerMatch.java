@@ -20,7 +20,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -272,5 +274,12 @@ public class ControllerMatch implements Initializable {
         newPlayerBox.getChildren().add(newPlayerLabel);
 
         appendText(oldPos + " -> " + newPos);
+    }
+
+    public void printResults(int playerN) {
+        Alert win = new Alert(Alert.AlertType.INFORMATION);
+        win.setTitle("Vittoria!");
+        win.setHeaderText("Il giocatore " + (playerN+1) + " ha vinto!");
+        win.show();
     }
 }
