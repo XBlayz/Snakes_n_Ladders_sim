@@ -23,7 +23,7 @@ public class Board {
 
     public Cell getCell(int position) {
         int c = (position-1) % columns; // Calculate the column index
-        int r = (position-1) / rows; // Calculate the row index
+        int r = (position-1) / columns; // Calculate the row index
         return cells[r][c];
     }
 }

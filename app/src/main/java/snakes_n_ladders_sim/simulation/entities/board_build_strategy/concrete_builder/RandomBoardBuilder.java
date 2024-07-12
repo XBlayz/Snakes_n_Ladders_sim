@@ -45,6 +45,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
 
     @Override
     public Cell[][] buildBoard(int rows, int columns, Mediator mediatorRif) {
+        log.debug("!!!Building board: " + rows + "x" + columns + " = " + rows*columns);
         mediator = mediatorRif;
         for (Cell c : specialCells) {
             c.setMediator(mediator);
@@ -59,7 +60,8 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
         while (nSpecialCells > 0) {
             // Get a random empty cell to fill
             int cellToFill = emptyCellPositionList.get(rng.nextInt(emptyCellPositionList.size()));
-            assignCell(board, (cellToFill-1) % columns, (cellToFill-1) / rows, rows, columns, rng);
+            log.debug("Cell to fill: " + cellToFill + " as [" + (cellToFill-1) / columns + "][" + (cellToFill-1) % columns + "]");
+            assignCell(board, (cellToFill-1) / columns, (cellToFill-1) % columns, rows, columns, rng);
         }
 
         // Assign the rest of the cells with BasicCell
@@ -100,6 +102,7 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
     }
 
     private void addCell(int i, int j, Cell[][] board, Cell cell) {
+        log.debug("Adding cell: r"+i+", c"+j);
         board[i][j] = cell;
         emptyCellPositionList.remove(Integer.valueOf((i+1)*(j+1)));
     }
@@ -109,12 +112,12 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             if(i < 1) {
                 // If is the first row, it's a Ladder
                 int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
-                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                addCell((tpPosition-1) / columns, (tpPosition-1) % columns, board, new BasicCell(mediator));
                 return new SnakeOrLadderCell(mediator, tpPosition, true);
             }else if(i > rows-2) {
                 // If is the last row, it's a Snake
                 int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                addCell((tpPosition-1) / columns, (tpPosition-1) % columns, board, new BasicCell(mediator));
                 return new SnakeOrLadderCell(mediator, tpPosition, false);
             }
 
@@ -122,15 +125,15 @@ public class RandomBoardBuilder implements BoardBuildStrategy {
             if(rng.nextFloat() <= 0.5) {
                 // Snake
                 int tpPosition = getRandomEmptyCellPositionSnake(i*columns, rng);
-                addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+                addCell((tpPosition-1) / columns, (tpPosition-1) % columns, board, new BasicCell(mediator));
                 return new SnakeOrLadderCell(mediator, tpPosition, false);
             }
             // Ladder
             int tpPosition = getRandomEmptyCellPositionLadder((i+1)*columns+1, rng);
-            addCell((tpPosition-1) % columns, (tpPosition-1) / rows, board, new BasicCell(mediator));
+            addCell((tpPosition-1) / columns, (tpPosition-1) % columns, board, new BasicCell(mediator));
             return new SnakeOrLadderCell(mediator, tpPosition, true);
         }catch(ImpossibleCellException e) {
-            log.warn("Impossible to add a snake or ladder to the board", e);
+            log.warn("Impossible to add a snake or ladder to the board");
             return new BasicCell(mediator);
         }
     }
