@@ -11,6 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ControllerMainMenu {
     // Scene switch properties
     private Stage stage;
@@ -35,28 +38,7 @@ public class ControllerMainMenu {
         stage.setMinHeight(400);
         stage.show();
 
-        System.out.println("New sim"); // TODO: replace with logger
-    }
-
-    public void loadSim(ActionEvent event) throws IOException {
-        // Load root node from FXML file (LoadSim)
-        FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/LoadSim.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        root = fxmlLoader.load(fileInputStream);
-
-        // Get stage
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-
-        // Set scene
-        scene = new Scene(root);
-
-        // Set stage
-        stage.setScene(scene);
-        stage.setMinWidth(600);
-        stage.setMinHeight(400);
-        stage.show();
-
-        System.out.println("Load sim"); // TODO: replace with logger
+        log.trace("Switched sceene: SimSetup");
     }
 
     public void exit(ActionEvent event) {
@@ -66,7 +48,7 @@ public class ControllerMainMenu {
         // Close stage
         stage.close();
 
-        System.out.println("Exit"); // TODO: replace with logger
+        log.trace("Application exited");
     }
 
 }
