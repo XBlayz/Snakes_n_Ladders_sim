@@ -145,15 +145,11 @@ _Elencare i requisiti non funzionali più’ importanti per il vostro Sistema._
 . _Interfaccia grafica_ (*GUI*):
 .. Menu principale
 .. Interfaccia di simulazione
-.. Animazioni movimento pedine
-.. Animazioni lancio dadi
-.. Animazioni mazzo di carte
 . _Regole:_
 .. Numero di dadi
 .. Tipologia dei dadi (numero di facce)
 . _Simulazione della partita:_
 .. Simulazione partite su thread separato
-.. Impostare diverse velocità di simulazione automatiche
 . _Termine simulazione:_
 .. Salvare log della simulazione
 
