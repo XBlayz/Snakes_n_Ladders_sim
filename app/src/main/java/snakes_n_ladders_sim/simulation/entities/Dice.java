@@ -37,8 +37,9 @@ public class Dice {
         }else{
             StringBuilder rollsString = new StringBuilder("Dice: ");
             for (int i = 0; i < numberOfDice; i++) {
-                roll += rng.nextInt(numberOfSides) + 1; // Normal dice roll
-                rollsString.append(roll).append("+");
+                int temp = rng.nextInt(numberOfSides) + 1; // Normal dice roll
+                roll += temp;
+                rollsString.append(temp).append("+");
             }
             rollsString.deleteCharAt(rollsString.length() - 1);
             log.info(rollsString.toString());
