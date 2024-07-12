@@ -135,7 +135,7 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [X] Multithread _(NFR)_
 - [ ] **Simulation**
   - [ ] Main simulation windows _(FR)_
-  - [ ] Manual advancement _(FR)_
+  - [X] Manual advancement _(FR)_
   - [X] Automatic advancement _(FR)_
     - [X] Simulation speed _(NFR)_
   - [X] Game board _(FR)_
@@ -156,10 +156,10 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [X] Standard cards (Bench, Inn, Dice and Spring) _(FR)_
     - [X] Extra cards (Do Not Stop) _(FR)_
   - [ ] End of simulation results _(FR)_
-    - [ ] Report log _(NFR)_
+    - [X] Report log _(NFR)_
 - [ ] _DEBUG_
   - [X] Logger
-    - [ ] Setup logger settings
+    - [X] Setup logger settings
   - [ ] Test
 
 See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).
