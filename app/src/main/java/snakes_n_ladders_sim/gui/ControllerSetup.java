@@ -77,6 +77,8 @@ public class ControllerSetup implements Initializable {
     @FXML
     private Spinner<Integer> nCards;
 
+    private static Match match;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Setup players spinner
@@ -124,8 +126,38 @@ public class ControllerSetup implements Initializable {
         nCards.setValueFactory(valueFactoryCardsNumber);
     }
 
-    public void startSim() {
-        // TODO: Start match scene
+    public void startSim(ActionEvent event) throws IOException {
+        Match newMatch = buildMatch(
+            players.getValue(),
+            rows.getValue(),
+            columns.getValue(),
+            boardBuilder.getValue(),
+            priceCells.isSelected(),
+            stopCells.isSelected(),
+            cards.isSelected(),
+            extraCards.isSelected(),
+            diceType.getValue(),
+            nDice.getValue(),
+            singleDice.isSelected(),
+            doubleDice.isSelected(),
+            nCards.getValue()
+        );
+        ControllerSetup.match = newMatch;
+
+        matchScene(event);
+    }
+
+    public void matchScene(ActionEvent event) throws IOException {
+        // Load root node from FXML file (Match)
+        FileInputStream fileInputStream = new FileInputStream(new File("src/main/resources/Match.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        root = fxmlLoader.load(fileInputStream);
+
+        // Get stage
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+
+        // Set scene
+        scene = new Scene(root);
 
         // Set stage
         stage.setScene(scene);
@@ -278,5 +310,8 @@ public class ControllerSetup implements Initializable {
 
         log.trace("Switched scene: MainMenu (Back)");
     }
+
+    public static Match getMatch() {
+        return match;
     }
 }

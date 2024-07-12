@@ -77,23 +77,35 @@ public class Match extends Thread implements Mediator {
 
         boolean matchContinues = true;
         int i = -1;
+        Platform.runLater(() -> controller.setRound(nRounds + 1)); // Set the round number
+        log.info("Round " + (nRounds + 1));
         do {
             if(!autoRun) {
                 waitNextTurn(); // Wait for the "NextTurn" or "AutoRunEnable" event
+                if(interrupted()) return;
             }
 
             i++;
             if (i >= players.length) {
                 i = 0;
+                nRounds++;
+                if(interrupted()) return;
+                Platform.runLater(() -> controller.setRound(nRounds + 1)); // Update the round number
+                log.info("Round " + (nRounds + 1));
             }
 
             currentPlayer = players[i];
             currentPlayerIndex = i;
+            Platform.runLater(() -> controller.setCurrentTurn(currentPlayerIndex)); // Update the current player turn
             do {
+                if(interrupted()) return;
                 matchContinues = turn(); // Execute a player turn and get the result whether the player won the match
+                setWaitNextTurn(true);
+
+                waitTime(); // Wait for the specified delay
+                if(interrupted()) return;
             } while(!endTurn);
 
-            waitTime(); // Wait for the specified delay
         } while(matchContinues); // Check if the player won the match
 
         printResults(i); // Print the match results
@@ -116,12 +128,16 @@ public class Match extends Thread implements Mediator {
         Card card = null;
         if (action == Action.DRAW_CARD && deck != null) {
             card = deck.drawCard(); // Draw a card
-            log.info("Player " + (currentPlayerIndex+1) + " drew: " + card.toString());
+            String cardName = card.toString();
+            Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex+1) + " drew: " + cardName)); // TODO
+            log.info("Player " + (currentPlayerIndex+1) + " drew: " + cardName);
         }
 
         if (action == Action.TELEPORT) { // Snake or ladder cell action
-            currentPlayer.setPosition(data);
-            return currentPlayer.getPosition() != board.end;
+            int oldPos = currentPlayer.getPosition();
+            int newPos = currentPlayer.setPosition(data);
+            Platform.runLater(() -> controller.movePlayer(oldPos, newPos, currentPlayerIndex)); // Move the player on the board
+            return newPos != board.end;
         }else if (action == Action.REROLL || card == Card.DICE) { // Price cell action (dice) or dice card
             return rollDice();
         }else if(action == Action.JUMP || card == Card.SPRING) { // Price cell action (spring) or spring card
@@ -146,6 +162,7 @@ public class Match extends Thread implements Mediator {
         switch (message) {
             case DISCARD_DO_NOT_STOP_CARD: // Do not stop card discard in the bottom of the deck
                 deck.discardCard(Card.DO_NOT_STOP);
+                Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString())); // TODO
                 log.info("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString());
                 return true;
 
@@ -162,6 +179,7 @@ public class Match extends Thread implements Mediator {
      */
     private boolean turn() {
         if(currentPlayer.isBlocked()) {
+            Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " is blocked")); // TODO
             log.info("Player " + (currentPlayerIndex + 1) + " is blocked");
             endTurn = true;
             return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
@@ -172,6 +190,7 @@ public class Match extends Thread implements Mediator {
 
     private boolean rollDice() {
         lastRoll = dice.roll(currentPlayer.getPosition()>=board.end-dice.numberOfSides);
+        Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll)); // TODO
         log.info("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll);
 
         maxDiceRule();
@@ -179,11 +198,14 @@ public class Match extends Thread implements Mediator {
     }
 
     private boolean movePlayer() {
+        int oldPos = currentPlayer.getPosition();
         int position = currentPlayer.move(lastRoll); // Move the player and get the new position
-        log.info("Player " + (currentPlayerIndex + 1) + " moved to: " + position);
 
-        if(position == board.end) return false; // Check if the player won the match
         if(position > board.end) position = currentPlayer.setPosition(position-board.end); // If the player is outside the board, wrap it back to the beginning
+        log.info("Player " + (currentPlayerIndex + 1) + " moved to: " + position);
+        final int pos = position;
+        Platform.runLater(() -> controller.movePlayer(oldPos, pos, currentPlayerIndex)); // Move the player on the board
+        if(position == board.end) return false; // Check if the player won the match
 
         Cell cell = board.getCell(position);
         log.info("Player " + (currentPlayerIndex + 1) + " is on: " + cell.toString());
@@ -194,21 +216,58 @@ public class Match extends Thread implements Mediator {
         endTurn = lastRoll < dice.maxDice || !dice.isMaxDiceRuleOn; // Check if the player rolled the maximum value and, if the rule is active, the player has another turn
     }
 
-    private void waitNextTurn() {
-        // TODO: wait for the click of the "NextTurn" button or "AutoRun"
+    private synchronized void waitNextTurn() {
+        while(waitNextTurn && !autoRun) {
+            try {
+                log.debug("Match waiting for next turn (WaitNextTurn: " + waitNextTurn + ", AutoRun: " + autoRun + ")");
+                wait();
+                log.debug("Match waked up (WaitNextTurn: " + waitNextTurn + ", AutoRun: " + autoRun + ")");
+            } catch (InterruptedException ie) {
+                log.info("Match interrupted");
+                setAutoRun(true);
+                this.interrupt();
+            }
+        }
+    }
+
+    public synchronized void notifyNextTurn() {
+        setWaitNextTurn(false);
+        notifyAll();
+    }
+
+    public synchronized void setAutoRun(boolean value) {
+        autoRun = value;
+        if(value) notifyNextTurn();
+    }
+
+    private synchronized void setWaitNextTurn(boolean value) {
+        waitNextTurn = value;
     }
 
     private void waitTime() {
         try {
             TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException ie) {
-            Thread.currentThread().interrupt();
-            log.error("Error: " + ie);
+            log.info("Match interrupted");
+            this.interrupt();
         }
     }
 
     private void printResults(int i) {
         // TODO: show the match results
+        Platform.runLater(() -> controller.printText("Player " + (i + 1) + " has won!")); // TODO
         log.info("Player " + (i + 1) + " has won!");
+    }
+
+    public int getNumberOfPlayers() {
+        return players.length;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setController(ControllerMatch controller) {
+        this.controller = controller;
     }
 }
