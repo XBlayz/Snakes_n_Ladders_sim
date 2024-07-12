@@ -17,6 +17,9 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
 
+import snakes_n_ladders_sim.gui.ControllerSetup;
+import snakes_n_ladders_sim.simulation.Match;
+
 public class App extends Application {
 
     @Override
@@ -35,6 +38,15 @@ public class App extends Application {
         stage.setMinWidth(600);
         stage.setMinHeight(400);
         stage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        Match match = ControllerSetup.getMatch();
+        if(match != null) {
+            match.interrupt();
+        }
     }
 
     private static void setupLogger() {
@@ -61,5 +73,4 @@ public class App extends Application {
 
         launch(args); // Start the application
     }
-
 }
