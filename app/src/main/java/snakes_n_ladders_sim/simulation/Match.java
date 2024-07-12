@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
 
+import javafx.application.Platform;
+
 import lombok.extern.slf4j.Slf4j;
 
+import snakes_n_ladders_sim.gui.ControllerMatch;
 import snakes_n_ladders_sim.simulation.entities.*;
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.cards.*;
@@ -23,14 +26,19 @@ public class Match extends Thread implements Mediator {
     private final Deck deck;
 
     // Turn advancement settings
-    private boolean autoRun = true;
-    private int delay = 500;
+    private boolean autoRun = false;
+    private boolean waitNextTurn = true;
+    private int delay = 1000;
 
     // Current player properties
     private Player currentPlayer;
     private int currentPlayerIndex;
     private int lastRoll;
     private boolean endTurn;
+    private int nRounds = 0;
+
+    // GUI Controller
+    private ControllerMatch controller;
 
     public Match(int nPlayer, int rows, int columns, BoardBuildStrategy boardBuildStrategy, boolean isCardsOn, boolean isExtraCardsOn, int numberOfSides, int numberOfDice, boolean isSingleDiceRuleOn, boolean isMaxDiceRuleOn, int numberOfEachCard) {
         // Create all players
@@ -65,11 +73,7 @@ public class Match extends Thread implements Mediator {
 
     @Override
     public void run() {
-        // TODO: Log match rules
-        // TODO: Log player info
-        // TODO: Log board info
-        // TODO: Log dice info
-        log.info(deck.toString());
+        log.info("!Simulation started!");
 
         boolean matchContinues = true;
         int i = -1;

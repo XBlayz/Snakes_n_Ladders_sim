@@ -29,11 +29,14 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.BoardBuildStrategy;
 import snakes_n_ladders_sim.simulation.entities.board_build_strategy.concrete_builder.RandomBoardBuilder;
 import snakes_n_ladders_sim.utility.MatchConfig;
 import snakes_n_ladders_sim.simulation.Match;
 
+@Slf4j
 public class ControllerSetup implements Initializable {
     // Scene switch properties
     private Stage stage;
@@ -124,15 +127,33 @@ public class ControllerSetup implements Initializable {
     public void startSim() {
         // TODO: Start match scene
 
-        buildMatch(players.getValue(), rows.getValue(), columns.getValue(), boardBuilder.getValue(), priceCells.isSelected(), stopCells.isSelected(), cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), nCards.getValue()).start();
+        // Set stage
+        stage.setScene(scene);
+        stage.setMinWidth(600);
+        stage.setMinHeight(400);
+        stage.show();
 
-        System.out.println("Simulation started"); // TODO: replace with logger
+        log.trace("Switched scene: Match");
     }
 
     public void save() {
         // YAML parser
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        MatchConfig matchConfig = new MatchConfig(players.getValue(), rows.getValue(), columns.getValue(), boardBuilder.getValue(), priceCells.isSelected(), stopCells.isSelected(), cards.isSelected(), extraCards.isSelected(), diceType.getValue(), nDice.getValue(), singleDice.isSelected(), doubleDice.isSelected(), nCards.getValue());
+        MatchConfig matchConfig = new MatchConfig(
+            players.getValue(),
+            rows.getValue(),
+            columns.getValue(),
+            boardBuilder.getValue(),
+            priceCells.isSelected(),
+            stopCells.isSelected(),
+            cards.isSelected(),
+            extraCards.isSelected(),
+            diceType.getValue(),
+            nDice.getValue(),
+            singleDice.isSelected(),
+            doubleDice.isSelected(),
+            nCards.getValue()
+        );
 
         // File Chooser window
         FileChooser fileChooser = new FileChooser();
@@ -148,12 +169,12 @@ public class ControllerSetup implements Initializable {
             // Try to write file
             try {
                 mapper.writeValue(file, matchConfig);
-                System.out.println("Match saved to: " + file.getAbsolutePath()); // TODO: replace with logger
+                log.debug("Match saved to: " + file.getAbsolutePath());
             } catch (IOException e) {
-                System.err.println("Match not saved as IOException raised"); // TODO: replace with logger
+                log.error("Match not saved as IOException raised", e);
             }
         }else{
-            System.out.println("Match not saved"); // TODO: replace with logger
+            log.debug("Match not saved as file not selected (null)");
         }
     }
 
@@ -189,17 +210,32 @@ public class ControllerSetup implements Initializable {
             doubleDice.setSelected(matchConfig.isMaxDiceRuleOn);
             nCards.getValueFactory().setValue(matchConfig.numberOfEachCard);
 
-            System.out.println("Match loaded"); // TODO: replace with logger
+            log.debug("Match loaded from: " + file.getAbsolutePath());
         } catch(StreamReadException | DatabindException e) {
             Alert a = new Alert(AlertType.ERROR);
+            log.warn("Match not loaded as StreamReadException or DatabindException raised (invalid file)", e);
             a.setContentText("Il file selezionato non è valido");
             a.show();
         } catch(IOException e) {
-            System.err.println("Match not loaded as IOException raised"); // TODO: replace with logger
+            log.error("Match not loaded as IOException raised", e);
         }
     }
 
-    private Match buildMatch(int players, int rows, int columns, String boardBuildStrategyString, boolean isPriceCellOn, boolean isStopCellOn, boolean isCardOn, boolean isExtraCardsOn, int diceType, int nDice, boolean isSingleDiceRuleOn, boolean iMaxDiceRuleOn, int nCards) {
+    private Match buildMatch(
+        int players,
+        int rows,
+        int columns,
+        String boardBuildStrategyString,
+        boolean isPriceCellOn,
+        boolean isStopCellOn,
+        boolean isCardOn,
+        boolean isExtraCardsOn,
+        int diceType,
+        int nDice,
+        boolean isSingleDiceRuleOn,
+        boolean iMaxDiceRuleOn,
+        int nCards)
+    {
         BoardBuildStrategy boardBuildStrategy;
         if(boardBuildStrategyString.equals(boardBuilderList.get(0))) {
             boardBuildStrategy = new RandomBoardBuilder(isPriceCellOn, isStopCellOn, isCardOn);
@@ -240,6 +276,7 @@ public class ControllerSetup implements Initializable {
         stage.setMinHeight(400);
         stage.show();
 
-        System.out.println("Back to Main menu"); // TODO: replace with logger
+        log.trace("Switched scene: MainMenu (Back)");
+    }
     }
 }

@@ -6,8 +6,8 @@ import snakes_n_ladders_sim.simulation.mediator.Mediator;
 
 public class Board {
     // Board properties
-    private final int rows;
-    private final int columns;
+    public final int rows;
+    public final int columns;
     private Cell[][] cells;
 
     // Board constants
