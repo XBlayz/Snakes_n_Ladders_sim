@@ -84,6 +84,7 @@ public class Match extends Thread implements Mediator {
                 waitNextTurn(); // Wait for the "NextTurn" or "AutoRunEnable" event
                 if(interrupted()) return;
             }
+            Platform.runLater(() -> controller.clearText()); // Clear the text on the GUI
 
             i++;
             if (i >= players.length) {
@@ -129,7 +130,7 @@ public class Match extends Thread implements Mediator {
         if (action == Action.DRAW_CARD && deck != null) {
             card = deck.drawCard(); // Draw a card
             String cardName = card.toString();
-            Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex+1) + " drew: " + cardName)); // TODO
+            Platform.runLater(() -> controller.appendText("Carta pescata: " + cardName));
             log.info("Player " + (currentPlayerIndex+1) + " drew: " + cardName);
         }
 
@@ -162,7 +163,7 @@ public class Match extends Thread implements Mediator {
         switch (message) {
             case DISCARD_DO_NOT_STOP_CARD: // Do not stop card discard in the bottom of the deck
                 deck.discardCard(Card.DO_NOT_STOP);
-                Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString())); // TODO
+                Platform.runLater(() -> controller.appendText("Usa carta: " + Card.DO_NOT_STOP.toString()));
                 log.info("Player " + (currentPlayerIndex + 1) + " discarded: " + Card.DO_NOT_STOP.toString());
                 return true;
 
@@ -179,7 +180,7 @@ public class Match extends Thread implements Mediator {
      */
     private boolean turn() {
         if(currentPlayer.isBlocked()) {
-            Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " is blocked")); // TODO
+            Platform.runLater(() -> controller.appendText("Bloccato"));
             log.info("Player " + (currentPlayerIndex + 1) + " is blocked");
             endTurn = true;
             return true; // If the player is blocked, skip the player's turn and return true to indicate that the match continues
@@ -190,7 +191,7 @@ public class Match extends Thread implements Mediator {
 
     private boolean rollDice() {
         lastRoll = dice.roll(currentPlayer.getPosition()>=board.end-dice.numberOfSides);
-        Platform.runLater(() -> controller.appendText("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll)); // TODO
+        Platform.runLater(() -> controller.appendText("Dadi: " + lastRoll));
         log.info("Player " + (currentPlayerIndex + 1) + " rolled: " + lastRoll);
 
         maxDiceRule();

@@ -47,9 +47,9 @@
                       <TableColumn fx:id="isPlayerTurn" prefWidth="60.0" text="Turno" />
                     </columns>
                   </TableView>
-                  <Label fx:id="textEvent" alignment="CENTER" prefHeight="139.0" prefWidth="199.0" text="---">
+                  <Label fx:id="textEvent" alignment="CENTER" contentDisplay="CENTER" minHeight="150.0" minWidth="200.0" textAlignment="CENTER">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>

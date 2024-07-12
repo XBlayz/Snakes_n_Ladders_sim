@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -27,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +47,20 @@ public class ControllerMatch implements Initializable {
 
     // Match references
     private Match match;
+
+    private static final List<Color> playerColorList = Arrays.asList(
+        Color.BLUE,
+        Color.RED,
+        Color.DARKGREEN,
+        Color.DARKCYAN,
+        Color.DARKBLUE,
+        Color.ORANGERED,
+        Color.DARKORANGE,
+        Color.BROWN,
+        Color.DARKMAGENTA,
+        Color.OLIVE,
+        Color.ROYALBLUE
+    );
 
     @FXML
     private GridPane board;
@@ -75,6 +93,9 @@ public class ControllerMatch implements Initializable {
         match = ControllerSetup.getMatch();
         int rows = match.getBoard().rows;
         int columns = match.getBoard().columns;
+
+        // Shuffle player color list
+        Collections.shuffle(playerColorList);
 
         // Create board
         playerBoxArray = new HBox[columns*rows];
@@ -218,7 +239,7 @@ public class ControllerMatch implements Initializable {
     }
 
     public void clearText() {
-        textEvent.setText("---");
+        textEvent.setText("");
     }
 
     public void printText(String message) {
@@ -246,6 +267,10 @@ public class ControllerMatch implements Initializable {
         }
         log.debug("New position: " + newPos);
         HBox newPlayerBox = playerBoxArray[newPos-1];
-        newPlayerBox.getChildren().add(new Label("("+(playerN+1)+")"));
+        Label newPlayerLabel = new Label("("+(playerN+1)+")");
+        newPlayerLabel.setTextFill(playerColorList.get(playerN%playerColorList.size()));
+        newPlayerBox.getChildren().add(newPlayerLabel);
+
+        appendText(oldPos + " -> " + newPos);
     }
 }
