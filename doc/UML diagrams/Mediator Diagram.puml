@@ -1,0 +1,79 @@
+@startuml Mediator Diagram
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+
+hide empty members
+
+interface Mediator {
+    {abstract} +sendMessage(colleague:Colleague):(boolean)
+}
+abstract Colleague {
+    #mediator:Mediator
+    #Colleague(mediator:Mediator)
+}
+
+class Match {
+    ...
+    +sendMessage(colleague:Colleague):boolean
+    -reactToCell(action:Action,data:int):boolean
+    -reactToPlayer(message:PlayerMessageType):boolean
+    {method} ...
+}
+class Player {
+    -message:PlayerMessageType
+    ...
+    +block(turns:int)
+    +getMessage():PlayerMessageType
+    -setMessage(message:PlayerMessageType)
+    {method} ...
+}
+abstract Cell {
+    {abstract} +action():boolean
+    {abstract} +getAction():Action
+    {abstract} +getData():int
+}
+class ConcreateCell {
+    + action():boolean
+    ...
+    {method} ...
+}
+
+Mediator <|.. Match
+Colleague <|-- Cell
+Colleague <|-- Player
+Cell <|-- ConcreateCell
+
+Colleague --> Mediator
+Match *--> Player
+Match *--> Cell
+
+note left of Match::"sendMessage(colleague:Colleague):boolean"
+    if(colleague instanceof Cell) {
+        Cell cell = (Cell)colleague;
+        return reactToCell(cell.getAction(), cell.getData());
+    }else if(colleague instanceof Player) {
+        Player player = (Player)colleague;
+        return reactToPlayer(player.getMessage());
+    }
+    ...
+end note
+note right of Match::"reactToCell(action:Action,data:int):boolean"
+    // Esegui l'azione relativa all'azione e ai suoi dati
+end note
+note right of Match::"reactToPlayer(message:PlayerMessageType):boolean"
+    // Esegui l'azione relativa al messaggio
+end note
+
+note right of ConcreateCell::"action():boolean"
+    return mediator.sendMessage(this);
+end note
+note right of Player::"block(turns:int)"
+    if(doNotStopCards > 0) {
+        ...
+        setMessage(PlayerMessageType.DISCARD_DO_NOT_STOP_CARD);
+        mediator.sendMessage(this);
+        return;
+    }
+    ...
+end note
+
+@enduml

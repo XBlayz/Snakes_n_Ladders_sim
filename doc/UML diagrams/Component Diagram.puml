@@ -1,0 +1,15 @@
+@startuml Component Diagram
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+
+[Simulazione] as sim
+[GUI] as gui
+[Salva/Carica file] as file
+[Logger] as log
+
+gui -0)- sim: Avviare\nsimulazione
+file -0)- gui: Salva/Carica
+log -left-() "Logging"
+gui -( "Logging"
+sim -( "Logging"
+
+@enduml

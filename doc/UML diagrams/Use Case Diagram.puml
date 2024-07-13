@@ -1,0 +1,30 @@
+@startuml Use Case Diagram
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+left to right direction
+
+:Utente: as user
+
+rectangle "Software" {
+    usecase setup as "=Impostare simulazione
+--
+==Extension points
+Salvare simulazione
+Caricare simulazione"
+    (**Salvare simulazione**) as save
+    (**Caricare simulazione**) as load
+    (**Eseguire simulazione**) as run
+    (**Visualizzare risultati**) as results
+}
+
+user -- setup
+user -- save
+user -- load
+user -- run
+user -- results
+
+save ..> setup: <<extend>>
+load ..> setup: <<extend>>
+run ..> setup: <<include>>
+results .> run: <<include>>
+
+@enduml

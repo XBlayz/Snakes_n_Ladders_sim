@@ -193,18 +193,21 @@ _Documenta brevemente, in questa sezione, le ipotesi/decisioni sui requisiti pi�
 
 === B.6 Use Case Diagrams
 
-#TODO
+image::../out/doc/UML diagrams/Use Case Diagram/Use Case Diagram.svg[]
 
 == C. Architettura Software
 _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazione del tuo sistema, in termini di diagramma dei componenti e i relativi diagrammi di sequenza._
 
 === C.1 La visione statica del sistema: Diagramma dei Componenti
 
-#TODO: Mediator simulazione, Strategy creazione tabellone
+image::../out/doc/UML diagrams/Component Diagram/Component Diagram.svg[]
 
 === C.2 La visione dinamica dell'architettura software: Sequence Diagram
 
-#TODO: Game turn
+==== Sequence Diagram (GUI)
+image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (GUI).svg[]
+==== Sequence Diagram (Simulazione)
+image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (Simulazione).svg[]
 
 == D. Dati e loro modellazione  (se il sistema si interfaccia con un DBMS)
 _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui sopra. Modellate tali dati tramite un ER o similari. Specificate se e quali di tali dati sono gia’ forniti da applicativi esistenti._
@@ -214,16 +217,136 @@ _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui s
 == E. Scelte Progettuali (Design Decisions)
 _Documenta qui le 5 decisioni progettuali più importanti che hai dovuto prendere. È possibile utilizzare sia una specifica testuale che schematica._
 
-#TODO: Gestione delle entità partecipanti alla partita, Definizioni delle entità della simulazione, Costruzione del tabellone, Comunicazione GUI-Simulazione, Pattern State non usato per gestire i turni
+=== E.1 Definizione delle entità della simulazione
+Come prima cosa ho deciso di partire dalla definizione delle _entità_ che rappresenteranno la *partita*, sia dal punto di vista delle _responsabilità_ che da quello della distribuzione delle varie _proprietà_ (impostazioni) della *partita*.
+
+Ho optato per una struttura _simil-albero_, con un entità principale (*Match*) che racchiude tutte le altre principali (con anche esse che a loro volta possono essere composte da altre entità). In essa sarà presenta la logica principale della *simulazione* (main loop) con le proprietà che definiscono lo stato attuale della *simulazione* e che gestiscono il flusso di essa.
+
+Successivamente ho suddiviso la *partita* nelle varie _sotto entità_ principali:
+
+* *Giocatore* (_Player_)
+** Contiene tutte le informazioni relative ad un singolo giocatore tra cui: *Posizione sul tabellone*, *Numero di turni per cui è bloccato*, *Carte in possesso*
+** In più è responsabile per il suo *spostamento*, gestione dello *stato di blocco* e uso delle *carte in possesso*
+* *Tabellone* (_Board_)
+** Contiene la collezione delle *Celle*, altra entità che definisce le _azioni_ che un *giocatore* deve eseguire quando vi si trova sopra
+** Ho deciso di implementarla come _classe assestante_, invece che semplice _collezione_, per permettere la definizione di funzioni specifiche aggiuntive in futuro
+* *Dadi* (_Dice_)
+** Contiene tutte le informazioni relative al *lancio dei dadi* tra cui, oltre alla definizione dei dadi stessi (estremamente flessibile sia sul _numero di facce_ che _numero di dadi_), anche le informazioni relative alle regole che *influenzano il lancio dei dadi*
+* *Mazzo di carte* (_Deck_)
+** Anche essa definisce una collezione di *Carte*, oggetti definiti tramite il pattern *_SINGLETON_ *(implementati tramite _enumerator_) che rappresentano il tipo della carta
+** Anche essa come il *Tabellone* è come _classe assestante_, invece che semplice _collezione_, per poter implementare la gestione diretta delle carte come: *mescolamento delle carte alla creazione* e *pesca con scarto automatico* delle carte così dette _istantanee_
+** Le *Carte* in se non forniscono alcuna direttiva relativa alla'azione da eseguire, è la *Partita* a gestire le azioni che le carte definiscono
+
+=== E.2 Gestione delle relazioni tra entità della simulazione (Mediator)
+Per la gestione delle *interazioni* tra le entità di _pari livello_ (cioè le _entità_ che hanno lo stesso _padre_), per limitare al minimo le dipendenze, ho optato per l'uso del design pattern *_MEDIATOR_*.
+
+image::../out/doc/UML diagrams/Mediator Diagram/Mediator Diagram.svg[]
+
+=== E.3 Costruzione del tabellone (Strategy)
+Per la costruzione del *tabellone* ho scelto di usare il patter *_STRATEGY_*, definendo un oggetto per la costruzione costruzione delle varie *celle* nelle varie posizioni (_matrice_ di *celle*).
+
+Il motivo di questa scelta è legata alla possibilità di poter definire, in maniera indipendente dal *tabellone*, vari modi di costruirlo (ad esempio, random, manuale o anche un misto di varie strategie) permettendo di modificare le due funzionalità in maniera indipendente.
+
+image::../out/doc/UML diagrams/Strategy Builder Diagram/Strategy Builder Diagram.svg[]
+
+=== E.4 Gestione del main loop della simulazione
+Per quanto riguarda il *main loop* implementato nel metodo _run()_ di *Match*, una soluzione potrebbe essere quella di usare il pattern *_STATE_*, ma ho optato per un'implementazione classica (usando metodi richiamati a cascata) in quanto la logica generale _non dovrebbe cambiare in modo prevalente_ in futuro e soprattutto l'implementazione richiederebbe molto _tempo_ e _spezzetterebbe_ il codice in maniera eccessiva.
+
+=== E.5 Comunicazione GUI-Simulazione
+Con l'implementazione della *GUI* e della *Simulazione* tramite thead indipendente, ho dovuto determinare un modo per far comunicare i due _componenti_ e ho così individuato 3 principali strategie:
+
+* Uso di *monitor* e passaggio di dati tramite _metodi_ e _variabili_
+** Implementare dei metodi da usare per far comunicare il thread della *GUI* con quello della *Simulazione* sincronizzandoli appropriatamente
+** + Efficiente
+** - Implementazione complessa
+** - Rischio di introdurre bug
+** - Introduzione di dipendenze
+* Uso di *task*
+** Particolari oggetti forniti dal framework *JavaFX* che permettono di eseguire operazioni in _background_ per interagire con la *GUI*
+** + Strumento molto flessibile
+** + Sicuro ed efficiente
+** - Richiede una re-implementazione del main loop
+* Uso di *Platform.runLater(...)*
+** Particolare classe fornita dal framework *JavaFX* che permette il passaggio di un _Runnable_ di eseguire operazioni sulla *GUI* in maniera automatica
+** + Semplice e veloce da implementare
+** + Sicuro e rapido nell'esecuzione
+** - Non ottimale per operazioni lunghe e complesse
+
+Per la gestione degli _eventi_ legati alla *simulazione*, la mia scelta è ricaduta sull'ultima opzione, per via della _semplicità_ d'uso e la possibilità di definire *singole funzioni* che eseguono _semplici operazioni_ (simile a dei messaggi) in maniera disconnessa dal *main loop thread*, che può operare in modo indipendente (la classe *Platform* implementa un lista di richieste permettendo l'accumulo e lo smaltimento di esse in maniera automatica da parte della *GUI*).
+
+Per la gestione dell'avanzamento _manuale_ o _automatico_ della *simulazione* ho invece optato per la prima opzione, in quanto l'uso di *Platform.runLater(...)* non garantisce l'istantaneità dell'esecuzione dell'azione, fondamentale per una ottima responsività della *GUI*.
 
 == F. Progettazione di Basso Livello
 
-#TODO: Celle, Carte, Costruttore Tabellone random, Turni e Azioni
+=== F.1 Simulazione
+L'implementazione della simulazione si basa sull'esecuzione del thread *Match* che implementa nel metodo `run()` il _main loop_ della partita. In questa classe sono definite tutte le condizioni e le operazioni da eseguire per permettere alla simulazione di procedere. Le operazioni sono gestite dalla classe *Matach* che interagisce con tutte le altre entità che la compongono e si pone da intermediario (*_MEDIATOR_*) tra di esse.
+
+Ogni operazione è racchiusa in un metodo separato che, a cascata, chiama i metodi successivi per procedere con la simulazione.
+
+Il _main loop_ si compone da 3 fasi principali:
+
+. Individuazione del giocatore che deve prendere turno
+.. Questa fase è semplicemente gestita da un indice che viene incrementato ogni volta che un giocatore termina il proprio turno e quando anche l'ultimo giocatore ha terminato il turno questo viene riportato a 0, ripetendo le turnazioni
+. Esecuzione del turno
+.. Il turno è composto a sua volta da 4 fasi:
+... Verifica se il giocatore è bloccato (è l'entità *Player* a tenere traccia di ciò)
+... Lanciare i dadi (eseguendo il metodo `roll(boolean isBoardLastNCells)` e passando come parametro la se è verificata la condizione della regola *_Dado Singolo_*)
+... Movimento del giocatore (muovendo il *Player* e verificando che il giocatore non abbia vinto o sia uscito fuori dal tabellone, nel primo caso si ritorna terminando la partita, mentre nel secondo caso sposta il giocatore all'inizio del tabellone del movimento residuo)
+... Esecuzione dell'azione della cella (che tramite il patter *_MEDIATOR_* segnala all'oggetto *Match* di eseguire l'operazione richiesta sul giocatore corrente)
+. Terminazione del turno
+.. Si verificano le condizioni se il turno del giocatore è finito e deve eseguire un'altro turno
+.. E si verificano le condizioni se la partita è terminata con un vincitore
+
+Nel _main loop_ sono in più presenti diversi _interrupt check_ in modo da terminare il loop non appena esso viene interrotto (per esempio dalla chiusura della *GUI*).
+
+=== F.2 GUI
+Le varie schermate della *GUI* sono state implementate tramite l'uso del software *Scene Builder* e per ognuna di esse è stato definito un `Controller`, una classe speciale che inizializza i vari componenti della scena e ne gestisce le interazioni tramite degli `EventListener`.
+
+In più è il controller della schermata di setup a costruire ed avviare direttamente l'oggetto *Match* relativo alla partita da simulare. In questo modo esso ne possiede un riferimento che può passare al controller relativo alla schermata di simulazione che può usare per comunicare con esso.
+
+L'implementazione dei controller segue le linee guida descritte nella documentazione del framework.
 
 == G. Spiegare come il progetto soddisfa i requisiti funzionali (RF) e quelli non funzionali (RNF)
 _Riporta in questa sezione in che modo la progettazione architettonica e di basso livello prodotta soddisfa gli RF e gli RNF._
 
-#TODO
+=== G.1 RF
+. _Impostazione della partita da simulare:_
+.. Interfaccia di setup
+... Impostazione dimensione tabellone (Da un minimo di 3 ad un massimo di 15 per dimensione)
+... Impostazione posizione delle caselle (Possibilità di scegliere il *BoardStrategyBuilder*)
+.. Salvare/caricare setup (Salvataggio e caricamento dei setup tramite file _YAML_)
+. _Simulazione della partita:_
+.. Avanzamento automatico e manuale dei turni (Checkbox che permette di scegliere se abilitare l'avanzamento automatico, o se usare il tasto di avanzamento manuale che si disabilita in avanzamento automatico)
+.. Lancio dei dai
+... Dadi doppi o singoli (Possibilità di scegliere tra 1 o 2 dadi)
+... Regola del dado singolo (Checkbox che si disabilita se è stato scelto 1 dado solo)
+... Regola del doppio sei (Checkbox che si disabilita se è stato scelto 1 dado solo)
+.. Regole di movimento delle pedine
+... Caselle "Scale & Serpenti" (Checkbox)
+... Caselle "Sosta" (Checkbox)
+... Caselle "Premio" (Checkbox)
+... Caselle "Pesca una Carta" (Checkbox)
+.. Mazzo di carte
+... Carte standard (Abilitata automaticamente se la Checkbox "Pesca una Carta" è attiva)
+... Carte extra (Checkbox che si disabilita se le carte sono disabilitate)
+. _Visualizzazione dei turni simulati:_
+.. Rappresentazione del tabellone (Tabellone rappresentato tramite griglia con numero cella e tipologia)
+.. Rappresentazione delle pedine sul tabellone (All'interno della cella tramite un numero colorato)
+. _Visualizzazione dei risultati della partita:_
+.. Vincitore della partita (Popup a termine della simulazione)
+.. Classifica finale (Possibilità di consulate il tabellone al temine della partita o tramite log)
+
+=== G.2 RNF
+. _Interfaccia grafica_ (*GUI*):
+.. Menu principale (Menu principale semplice per presentare il software)
+.. Interfaccia di simulazione (Schermata di simulazione interattiva)
+. _Regole:_
+.. Numero di dadi (Predisposizione per scelta di dadi superiore a 2)
+.. Tipologia dei dadi (Predisposizione per scelta di dadi con facce superiore a 2)
+. _Simulazione della partita:_
+.. Simulazione partite su thread separato (Implementazione della classe *Match* su thread)
+. _Termine simulazione:_
+.. Salvare log della simulazione (Uso del logger *_Logback_*)
 
 == Appendice. Prototipo
 _Fornisci un breve rapporto sul tuo prototipo e in particolare: informazioni su ciò che hai implementato, come l'implementazione copre RF e RNF, come i prototipi dimostrano la correttezza del tuo progetto rispetto a RF e RNF. Puoi aggiungere alcuni screenshot per descrivere quanto richiesto sopra. Preparati a mostrare il tuo prototipo durante l'esame orale._

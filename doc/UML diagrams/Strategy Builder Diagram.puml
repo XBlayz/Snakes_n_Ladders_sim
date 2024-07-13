@@ -1,0 +1,44 @@
+@startuml Strategy Builder Diagram
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+
+hide empty members
+
+interface BoardBuildStrategy {
+    {abstract} +buildBoard(rows:int, columns:int, mediator:Mediator):Cell[][]
+}
+
+class ConcreateBoardBuildStrategy {
+    ...
+    +ConcreateBoardBuildStrategy(...)
+    +buildBoard(rows:int, columns:int, mediator:Mediator):Cell[][]
+    {method} ...
+}
+class Board {
+    -cells:Cell[][]
+    ...
+    +Board(rows:int, columns:int, boardBuildStrategy:BoardBuildStrategy, mediator:Mediator)
+    {method} ...
+}
+
+ConcreateBoardBuildStrategy ..|> BoardBuildStrategy
+Board *-- BoardBuildStrategy
+
+note left of ConcreateBoardBuildStrategy::"ConcreateBoardBuildStrategy(...)"
+    ...
+    // Imposta i dati per la costruzione del tabellone
+    ...
+end note
+note left of ConcreateBoardBuildStrategy::"buildBoard(rows:int, columns:int, mediator:Mediator):Cell[][]"
+    Cell[][] board = new Cell[rows][columns];
+    ...
+    // Esegue la costruzione della baord
+    ...
+    return board;
+end note
+
+note right of Board::"Board(rows:int, columns:int, boardBuildStrategy:BoardBuildStrategy, mediator:Mediator)"
+    this.cells = boardBuildStrategy.buildBoard(rows, columns, mediator);
+    ...
+end note
+
+@enduml

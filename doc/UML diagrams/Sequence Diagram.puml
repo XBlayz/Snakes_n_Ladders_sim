@@ -1,0 +1,117 @@
+@startuml Sequence Diagram (GUI)
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+
+actor Utente
+participant App
+participant GUI
+participant Simulazione
+participant Logger
+database "Windows file" as windows
+
+Utente -> App ++ : //avvia// l'**App**
+
+==Inizializzazione==
+App -> App ++ : setupLogger()
+create Logger
+group par
+    App -> Logger : setup()
+    note over Logger : Logging attività
+    deactivate App
+    create GUI
+    App -> GUI ++ : launch()
+    deactivate App
+    GUI -> App ++ : start(stage:Stage)
+    windows -> App : load(mainMenu:Scene)
+    App -> GUI : setScene(mainMenu:Scene)
+    App -> GUI : show()
+    deactivate App
+
+    ==Menu Principale==
+    Utente -> GUI : //clicca// su **Nuova simulazione**
+    GUI -> GUI ++ : eventListener(event:Event)
+    windows -> GUI : load(setupMenu:Scene)
+    GUI -> GUI : setScene(setupMenu:Scene)
+    GUI -> GUI : show()
+    deactivate GUI
+
+    ==Menu di setup==
+    Utente -> GUI : //clicca// sulle **Impostazioni**
+    GUI -> GUI ++ : eventListener(event:Event)
+    deactivate GUI
+    Utente -> GUI : //clicca// su **Avvia partita**
+    GUI -> GUI ++ : eventListener(event:Event)
+    create Simulazione
+    GUI -> Simulazione : new()
+    GUI -> Simulazione ++ : start()
+    deactivate GUI
+    ref over GUI : Cambio scena a Simulazione
+
+    ==Simulazione==
+    ref over Simulazione : Sequence Diagram\n(Simulazione)
+
+    ==Risultati==
+    Simulazione -> GUI ++ : results()
+    deactivate Simulazione
+    GUI -> GUI : showAllertResults()
+    deactivate GUI
+    Utente -> GUI : //clicca// sulle **Exit**
+    GUI -> App ++ : close()
+    App -> GUI
+    deactivate GUI
+    deactivate App
+end
+
+@enduml
+
+
+
+@startuml Sequence Diagram (Simulazione)
+!include https://raw.githubusercontent.com/patrik-csak/one-dark-plantuml-theme/v1.0.1/theme.puml
+
+participant Match
+collections Players
+participant Player
+participant Dice
+participant Board
+collections Cells
+participant Cell
+
+[o-> Match ++ : run()
+loop La partita continua
+    Match -> Players ++ : getNextPlayer()
+    return player:Player
+    loop È il turno del giocatore corrente
+        alt Il giocatore è bloccato
+            Match -> Match ++ : turn()
+            return
+        else
+            Match -> Match ++ : turn()
+            Match -> Match ++ : rollDice()
+            Match -> Player ++ : getPosition()
+            return playerPosition:int
+            Match -> Dice ++ : roll(isInLastNCells:bool)
+            return roll:int
+            Match -> Match ++ : move()
+            Match -> Player ++ : move(roll:int)
+            return position:int
+            Match -> Board ++ : getCell(position:int)
+            Board -> Cells ++ : getCell(position:int)
+            return cell:Cell
+            return cell:Cell
+            Match -> Cell ++ : action()
+            Cell -> Match ++ : sendMessage(colleague:Colleague)
+            ref over Match : Reaggisce al messaggio
+            return
+            return
+            return
+            return
+            return
+        end
+    end
+end
+Match -> Match ++ : results()
+[<- Match : results
+deactivate Match
+deactivate Match
+
+@enduml
