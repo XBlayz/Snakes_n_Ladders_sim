@@ -105,7 +105,7 @@ A program for simulate **Snakes & Ladders** matches with different _layer of cus
 For compiling the project you just need to run the **Gradle** _task_: `build` and than extract the file form the `app.zip` file in the folder `app/build/distributions`, or just run the **Gradle** _task_: `run` for executing the application directly.
 
 ### Prerequisites
-* **Java** `17+` (Developed in **Java** `20.0.1`)
+* **Java** `17+` (Developed in **Java** `21`)
 * **JavaFX** `21` (_Gradle_ dependency)
 * **Jackson** `2.17.2` (_Gradle_ dependency)
 * **Logback** `1.5.6` (_Gradle_ dependency)
@@ -120,7 +120,9 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-#TODO
+For running the program run the following command in the repository folder:
+- Powershell: `.\gradlew run`
+- Linux: `gradlew run`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -157,10 +159,10 @@ For compiling the project you just need to run the **Gradle** _task_: `build` an
     - [X] Extra cards (Do Not Stop) _(FR)_
   - [X] End of simulation results _(FR)_
     - [X] Report log _(NFR)_
-- [ ] _DEBUG_
+- [X] _DEBUG_
   - [X] Logger
     - [X] Setup logger settings
-  - [ ] Test
+  - [X] Test
 
 See the [open issues](https://github.com/XBlayz/Snakes_n_Ladders_sim/issues) for a full list of proposed features (and known issues).
 
