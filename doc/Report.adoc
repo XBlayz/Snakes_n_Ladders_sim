@@ -26,7 +26,7 @@ Documento Finale (D3) | {docdate}
 
 .^|Gestione costruzione del *tabellone* in più modi _differenti_
 ^.^|09/07/2024
-^.^|##/07/2024
+^.^|11/07/2024
 |Uso del pattern *Strategy* con la definizione di diversi _oggetti_ (_strategie_) per la costruzione del *tabellone*
 
 |===
