@@ -1,0 +1,191 @@
+4071 [Thread-3] INFO  s.simulation.Match -- !Simulation started!
+4075 [Thread-3] INFO  s.simulation.Match -- Round 1
+5727 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Auto run: ON
+5729 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 6+4
+5729 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 10
+5729 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 10
+5733 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+6735 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+2
+6735 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 4
+6735 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 4
+6735 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+7738 [Thread-3] INFO  s.simulation.Match -- Round 2
+7739 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+6
+7739 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 10
+7739 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 20
+7739 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+8739 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 5+2
+8740 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 7
+8740 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 11
+8740 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+9742 [Thread-3] INFO  s.simulation.Match -- Round 3
+9742 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 1+2
+9742 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 3
+9742 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 23
+9742 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+10743 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+3
+10743 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 5
+10743 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 16
+10743 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+11744 [Thread-3] INFO  s.simulation.Match -- Round 4
+11744 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 5+2
+11744 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 7
+11744 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 30
+11744 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+12239 [Thread-3] INFO  s.simulation.Match -- Match interrupted
+32175 [Thread-3] INFO  s.simulation.Match -- !Simulation started!
+32178 [Thread-3] INFO  s.simulation.Match -- Round 1
+35859 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+35860 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 3+1
+35860 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 4
+35861 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 4
+35862 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+38313 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+38313 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+2
+38314 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 4
+38314 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 4
+38314 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+39761 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+39762 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+2
+39762 [Thread-3] INFO  s.simulation.Match -- Player 3 rolled: 4
+39762 [Thread-3] INFO  s.simulation.Match -- Player 3 moved to: 4
+39762 [Thread-3] INFO  s.simulation.Match -- Player 3 is on: [---]
+40958 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+40958 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 3+6
+40959 [Thread-3] INFO  s.simulation.Match -- Player 4 rolled: 9
+40959 [Thread-3] INFO  s.simulation.Match -- Player 4 moved to: 9
+40959 [Thread-3] INFO  s.simulation.Match -- Player 4 is on: [---]
+43296 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+43296 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 6+4
+43296 [Thread-3] INFO  s.simulation.Match -- Player 5 rolled: 10
+43296 [Thread-3] INFO  s.simulation.Match -- Player 5 moved to: 10
+43297 [Thread-3] INFO  s.simulation.Match -- Player 5 is on: [---]
+45264 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+45265 [Thread-3] INFO  s.simulation.Match -- Round 2
+45265 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 3+4
+45265 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 7
+45265 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 11
+45266 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+48014 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+48014 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+6
+48014 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 10
+48014 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 14
+48014 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+50485 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+50485 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+2
+50485 [Thread-3] INFO  s.simulation.Match -- Player 3 rolled: 4
+50485 [Thread-3] INFO  s.simulation.Match -- Player 3 moved to: 8
+50485 [Thread-3] INFO  s.simulation.Match -- Player 3 is on: [---]
+52342 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+52342 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+5
+52342 [Thread-3] INFO  s.simulation.Match -- Player 4 rolled: 7
+52342 [Thread-3] INFO  s.simulation.Match -- Player 4 moved to: 16
+52342 [Thread-3] INFO  s.simulation.Match -- Player 4 is on: [---]
+54240 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+54240 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 3+5
+54240 [Thread-3] INFO  s.simulation.Match -- Player 5 rolled: 8
+54241 [Thread-3] INFO  s.simulation.Match -- Player 5 moved to: 18
+54241 [Thread-3] INFO  s.simulation.Match -- Player 5 is on: [Reroll]
+54241 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 3+3
+54241 [Thread-3] INFO  s.simulation.Match -- Player 5 rolled: 6
+54241 [Thread-3] INFO  s.simulation.Match -- Player 5 moved to: 24
+54241 [Thread-3] INFO  s.simulation.Match -- Player 5 is on: [---]
+63884 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+63885 [Thread-3] INFO  s.simulation.Match -- Round 3
+63885 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+1
+63885 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 5
+63885 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 16
+63885 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+67251 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+67251 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 6+6
+67251 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 12
+67252 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 1
+67252 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+68253 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+2
+68253 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 6
+68253 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 7
+68253 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+68443 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+69254 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+6
+69254 [Thread-3] INFO  s.simulation.Match -- Player 3 rolled: 10
+69254 [Thread-3] INFO  s.simulation.Match -- Player 3 moved to: 18
+69254 [Thread-3] INFO  s.simulation.Match -- Player 3 is on: [Reroll]
+69254 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+4
+69255 [Thread-3] INFO  s.simulation.Match -- Player 3 rolled: 6
+69255 [Thread-3] INFO  s.simulation.Match -- Player 3 moved to: 24
+69255 [Thread-3] INFO  s.simulation.Match -- Player 3 is on: [---]
+74946 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+74946 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 5+2
+74946 [Thread-3] INFO  s.simulation.Match -- Player 4 rolled: 7
+74946 [Thread-3] INFO  s.simulation.Match -- Player 4 moved to: 23
+74947 [Thread-3] INFO  s.simulation.Match -- Player 4 is on: [Spring]
+74947 [Thread-3] INFO  s.simulation.Match -- Player 4 moved to: 5
+74947 [Thread-3] INFO  s.simulation.Match -- Player 4 is on: [---]
+77440 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+77440 [Thread-3] INFO  s.simulation.entities.Dice -- Dice (single): 4
+77440 [Thread-3] INFO  s.simulation.Match -- Player 5 rolled: 4
+77440 [Thread-3] INFO  s.simulation.Match -- Player 5 moved to: 3
+77440 [Thread-3] INFO  s.simulation.Match -- Player 5 is on: [---]
+78892 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+78892 [Thread-3] INFO  s.simulation.Match -- Round 4
+78892 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 4+4
+78892 [Thread-3] INFO  s.simulation.Match -- Player 1 rolled: 8
+78892 [Thread-3] INFO  s.simulation.Match -- Player 1 moved to: 24
+78892 [Thread-3] INFO  s.simulation.Match -- Player 1 is on: [---]
+79788 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+79894 [Thread-3] INFO  s.simulation.entities.Dice -- Dice: 2+1
+79894 [Thread-3] INFO  s.simulation.Match -- Player 2 rolled: 3
+79894 [Thread-3] INFO  s.simulation.Match -- Player 2 moved to: 10
+79894 [Thread-3] INFO  s.simulation.Match -- Player 2 is on: [---]
+80534 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+80895 [Thread-3] INFO  s.simulation.entities.Dice -- Dice (single): 1
+80895 [Thread-3] INFO  s.simulation.Match -- Player 3 rolled: 1
+80895 [Thread-3] INFO  s.simulation.Match -- Player 3 moved to: 25
+81496 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+81897 [Thread-3] INFO  s.simulation.Match -- Player 3 has won!
+
+
+31533 [Thread-3] INFO  s.simulation.Match -- !Simulation started!
+31535 [Thread-3] INFO  s.simulation.Match -- Round 1
+38078 [Thread-3] INFO  s.simulation.Match -- Match interrupted
+53436 [Thread-4] INFO  s.simulation.Match -- !Simulation started!
+53437 [Thread-4] INFO  s.simulation.Match -- Round 1
+76711 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Auto run: ON
+76712 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 2+4
+76713 [Thread-4] INFO  s.simulation.Match -- Player 1 rolled: 6
+76713 [Thread-4] INFO  s.simulation.Match -- Player 1 moved to: 6
+76715 [Thread-4] INFO  s.simulation.Match -- Player 1 is on: [---]
+77718 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 1+6
+77718 [Thread-4] INFO  s.simulation.Match -- Player 2 rolled: 7
+77718 [Thread-4] INFO  s.simulation.Match -- Player 2 moved to: 7
+77719 [Thread-4] INFO  s.simulation.Match -- Player 2 is on: [---]
+78719 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 1+5
+78719 [Thread-4] INFO  s.simulation.Match -- Player 3 rolled: 6
+78719 [Thread-4] INFO  s.simulation.Match -- Player 3 moved to: 6
+78719 [Thread-4] INFO  s.simulation.Match -- Player 3 is on: [---]
+79720 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 3+2
+79720 [Thread-4] INFO  s.simulation.Match -- Player 4 rolled: 5
+79720 [Thread-4] INFO  s.simulation.Match -- Player 4 moved to: 5
+79720 [Thread-4] INFO  s.simulation.Match -- Player 4 is on: [Ladder (18)]
+80723 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 5+1
+80723 [Thread-4] INFO  s.simulation.Match -- Player 5 rolled: 6
+80723 [Thread-4] INFO  s.simulation.Match -- Player 5 moved to: 6
+80723 [Thread-4] INFO  s.simulation.Match -- Player 5 is on: [---]
+81103 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Auto run: OFF
+84986 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+84986 [Thread-4] INFO  s.simulation.Match -- Round 2
+84986 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 5+2
+84986 [Thread-4] INFO  s.simulation.Match -- Player 1 rolled: 7
+84987 [Thread-4] INFO  s.simulation.Match -- Player 1 moved to: 13
+84987 [Thread-4] INFO  s.simulation.Match -- Player 1 is on: [---]
+85988 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+85988 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 1+6
+85989 [Thread-4] INFO  s.simulation.Match -- Player 2 rolled: 7
+85989 [Thread-4] INFO  s.simulation.Match -- Player 2 moved to: 14
+85989 [Thread-4] INFO  s.simulation.Match -- Player 2 is on: [---]
+87001 [JavaFX Application Thread] INFO  s.gui.ControllerMatch -- Next turn (manual)
+87001 [Thread-4] INFO  s.simulation.entities.Dice -- Dice: 3+1
+87002 [Thread-4] INFO  s.simulation.Match -- Player 3 rolled: 4
+87002 [Thread-4] INFO  s.simulation.Match -- Player 3 moved to: 10
+87002 [Thread-4] INFO  s.simulation.Match -- Player 3 is on: [---]
+101277 [Thread-4] INFO  s.simulation.Match -- Match interrupted

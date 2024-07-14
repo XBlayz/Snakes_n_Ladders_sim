@@ -351,4 +351,21 @@ _Riporta in questa sezione in che modo la progettazione architettonica e di bass
 == Appendice. Prototipo
 _Fornisci un breve rapporto sul tuo prototipo e in particolare: informazioni su ciò che hai implementato, come l'implementazione copre RF e RNF, come i prototipi dimostrano la correttezza del tuo progetto rispetto a RF e RNF. Puoi aggiungere alcuni screenshot per descrivere quanto richiesto sopra. Preparati a mostrare il tuo prototipo durante l'esame orale._
 
-#TODO
+Il prototipo implementa quasi tutti i requisiti richiesti, la possibilità di impostare una partita con i vari parametri modificabili per abilitare o disabilitare le varie regole, assicurando la compatibilità di esse. Permette il salvataggio e caricamento su file delle impostazioni di una parita in formato YAML.
+
+.Menu di impostazioni della simulazione
+image::.img/SetupMenu.png[]
+
+.Schermata di visualizzazione della partita avviata
+image::.img/MatchMenu.png[]
+
+La simulazione viene eseguita in completa autonomia, con la sola interazione richiesta dall'utente per la gestione dell'avanzamento dei turni che può essere automatico o manuale. Le varie e entità che compongono la simulazione sono testate tramite l'uso di test unitari con l'ausilio della libreria *JUnit*. I test pur non essendo esaustivi (troppo complesso e superfluo) dimostrano la correttezza delle varie operazioni di cui ogni oggetto e responsabile, verificando tutti i componenti più critici del software. Fa eccezione il testing del _main loop_ che essendo molto complesso (e principalmente basato su eventi casuali) richiederebbe un testing estremamente estensivo e complesso. La valutazione della suo correttezza e stata verificata manualmente esaminando i log, verificando che le varie operazioni vengono eseguite correttamente (stato coerente dei dati) e nell'ordine prestabilito.
+
+La rappresentazione della simulazione sulla GUI può risultare grezza e poco rifinita ma svolge correttamente la sua funzione di visualizzazione dello stato attuale della partita, mentre i log generati durante la simulazione risultano più esaustivi mostrando lo storico completo delle operazioni eseguite e permettendo un'analisi più approfondita della simulazione stessa.
+
+[source,log]
+----
+include::.file/logFile_INFO.log[lines=1..16]
+...
+include::.file/logFile_INFO.log[lines=142..145]
+----
