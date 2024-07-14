@@ -224,7 +224,7 @@ public class Match extends Thread implements Mediator {
                 wait();
                 log.debug("Match waked up (WaitNextTurn: " + waitNextTurn + ", AutoRun: " + autoRun + ")");
             } catch (InterruptedException ie) {
-                log.info("Match interrupted");
+                log.info("Match interrupted\n\n");
                 setAutoRun(true);
                 this.interrupt();
             }
@@ -249,7 +249,7 @@ public class Match extends Thread implements Mediator {
         try {
             TimeUnit.MILLISECONDS.sleep(delay);
         } catch (InterruptedException ie) {
-            log.info("Match interrupted");
+            log.info("Match interrupted\n\n");
             this.interrupt();
         }
     }
@@ -257,7 +257,7 @@ public class Match extends Thread implements Mediator {
     private void printResults(int i) {
         Platform.runLater(() -> controller.printText("Il giocatore " + (i + 1) + " ha vinto!"));
         Platform.runLater(() -> controller.printResults(i));
-        log.info("Player " + (i + 1) + " has won!");
+        log.info("Player " + (i + 1) + " has won!\n\n");
     }
 
     public int getNumberOfPlayers() {
