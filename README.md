@@ -81,7 +81,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+![Product Name Screen Shot][product-screenshot]
 
 A program for simulate **Snakes & Ladders** matches with different _layer of customization_ like custom **board**, different **rules** and _many more_.
 
