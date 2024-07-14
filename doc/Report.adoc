@@ -1,7 +1,7 @@
 = “Ingegneria del Software” | 2023-2024
 Docente: Prof. Angelo Furfaro; Studente: Stefano Scarcelli - 230668 <scrsfn02t15d086u@studenti.unical.it>
 Documento Finale (D3) | {docdate}
-:doctype: article
+:doctype: book
 :title-separator: |
 :toc:
 
@@ -200,14 +200,17 @@ _SE PERTINENTE, riporta qui sia la vista statica che dinamica della progettazion
 
 === C.1 La visione statica del sistema: Diagramma dei Componenti
 
-image::../out/doc/UML diagrams/Component Diagram/Component Diagram.svg[]
+image::../out/doc/UML diagrams/Component Diagram/Component Diagram.svg[scale=180%]
+
+<<<
 
 === C.2 La visione dinamica dell'architettura software: Sequence Diagram
 
-==== Sequence Diagram (GUI)
-image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (GUI).svg[]
-==== Sequence Diagram (Simulazione)
-image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (Simulazione).svg[]
+.Sequence Diagram (GUI)
+image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (GUI).svg[scale=55%]
+
+.Sequence Diagram (Simulazione)
+image::../out/doc/UML diagrams/Sequence Diagram/Sequence Diagram (Simulazione).svg[scale=90%]
 
 == D. Dati e loro modellazione  (se il sistema si interfaccia con un DBMS)
 _Definite le sorgenti di dati a voi necessarie per realizzare I servizi di cui sopra. Modellate tali dati tramite un ER o similari. Specificate se e quali di tali dati sono gia’ forniti da applicativi esistenti._
@@ -354,10 +357,10 @@ _Fornisci un breve rapporto sul tuo prototipo e in particolare: informazioni su 
 Il prototipo implementa quasi tutti i requisiti richiesti, la possibilità di impostare una partita con i vari parametri modificabili per abilitare o disabilitare le varie regole, assicurando la compatibilità di esse. Permette il salvataggio e caricamento su file delle impostazioni di una parita in formato YAML.
 
 .Menu di impostazioni della simulazione
-image::.img/SetupMenu.png[]
+image::.img/SetupMenu.png[scale=50%]
 
 .Schermata di visualizzazione della partita avviata
-image::.img/MatchMenu.png[]
+image::.img/MatchMenu.png[scale=40%]
 
 La simulazione viene eseguita in completa autonomia, con la sola interazione richiesta dall'utente per la gestione dell'avanzamento dei turni che può essere automatico o manuale. Le varie e entità che compongono la simulazione sono testate tramite l'uso di test unitari con l'ausilio della libreria *JUnit*. I test pur non essendo esaustivi (troppo complesso e superfluo) dimostrano la correttezza delle varie operazioni di cui ogni oggetto e responsabile, verificando tutti i componenti più critici del software. Fa eccezione il testing del _main loop_ che essendo molto complesso (e principalmente basato su eventi casuali) richiederebbe un testing estremamente estensivo e complesso. La valutazione della suo correttezza e stata verificata manualmente esaminando i log, verificando che le varie operazioni vengono eseguite correttamente (stato coerente dei dati) e nell'ordine prestabilito.
 
