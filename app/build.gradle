@@ -51,7 +51,7 @@ tasks.named('test') {
 tasks.register('openReport') {
     doLast {
         exec {
-            commandLine 'cmd', '/c', 'start file:///A:/Utenti/stefa/Documents/GitHub/Snakes_n_Ladders_sim/app/build/reports/tests/test/index.html'
+            commandLine 'cmd', '/c', 'start file:///C:/Users/stefa/Documents/MATLAB/Projects/Snakes_n_Ladders_sim/app/build/reports/tests/test/index.html'
         }
     }
 }

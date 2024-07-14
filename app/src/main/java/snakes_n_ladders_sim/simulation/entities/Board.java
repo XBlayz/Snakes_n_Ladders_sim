@@ -26,4 +26,9 @@ public class Board {
         int r = (position-1) / columns; // Calculate the row index
         return cells[r][c];
     }
+
+    // For testing
+    protected Cell[][] getCells() {
+        return cells;
+    }
 }
