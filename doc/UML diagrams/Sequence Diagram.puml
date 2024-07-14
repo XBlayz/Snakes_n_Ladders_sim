@@ -100,7 +100,7 @@ loop La partita continua
             return cell:Cell
             Match -> Cell ++ : action()
             Cell -> Match ++ : sendMessage(colleague:Colleague)
-            ref over Match : Reaggisce al messaggio
+            ref over Match : Reagisce al messaggio
             return
             return
             return
