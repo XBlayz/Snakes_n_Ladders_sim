@@ -211,7 +211,7 @@ Project Link: [https://github.com/XBlayz/Snakes_n_Ladders_sim](https://github.co
 * _Prof._ **F.** **Blefari** - _(UNICAL, Esercitatore corso **Ing. del Software**)_
 * [Bro Code](https://youtu.be/9XJicRt_FaI?si=DG6TItrVz8V4ODj-) - _(JavaFX tutorial)_
 * [Tom Gregory Tech](https://youtu.be/-dtcEMLNmn0?si=TSBWCfkbVy5r3RkX) - _(Gradle tutorial)_
-* Icons made by <a href="https://www.flaticon.com/authors/reion" title="Reion"> Reion </a> from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a>
+* Icons made by <a href="https://www.flaticon.com/authors/reion" title="Reion"> Reion</a> from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon.com</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
